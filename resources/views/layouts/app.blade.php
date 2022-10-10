@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Login - MyHealth</title>
+    <title>MyHealth</title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
 
     <!-- Fonts -->

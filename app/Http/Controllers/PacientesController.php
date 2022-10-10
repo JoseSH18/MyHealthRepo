@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Paciente;
+use Spatie\Permission\Models\Role;
 
 class PacientesController extends Controller
 {
@@ -15,6 +16,7 @@ class PacientesController extends Controller
 
     public function index(Request $request){
 
+        
         return view('paciente.index');
     }
 
