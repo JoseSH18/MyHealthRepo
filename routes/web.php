@@ -25,6 +25,8 @@ Route::get('/home', function () {
     return view('home');
 });
 Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 'index'])->name('paciente.index');
+
+Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->name('medico.index');
 Auth::routes();
 
 

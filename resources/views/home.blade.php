@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-3 offset-md-1" id="der">
                     <h1>Médico</h1>
-                    <form action="{{route('paciente.index')}}" method="get">
+                    <form action="{{route('medico.index')}}" method="get">
                         {{ csrf_field() }}
                         <button class="btn btn-link">Ir a sitio</button>
                     </form>

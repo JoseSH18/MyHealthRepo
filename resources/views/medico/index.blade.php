@@ -24,16 +24,10 @@
             <nav id="menu">
                 <ul>
                     <li>
-                        <a><h3>Inicio</h3></a>
+                        <a><h3>Actualizar Perfil</h3></a>
                     </li>
                     <li>
-                        <a><h3>Citas</h3></a>
-                    </li>
-                    <li>
-                        <a><h3>Doctores</h3></a>
-                    </li>
-                    <li>
-                        <a><h3>Expediente</h3></a>
+                        <a><h3>Control de Expedientes</h3></a>
                     </li>
                     <li>
                         <li class="nav-item dropdown">
@@ -64,7 +58,7 @@
     </header>
     <div id="slider" class="slider-big">
         <h1  style="color:#f3be5d">"No hay trucos, atajos, pastillas mágicas, pociones especiales o equipo especial. Lo único que necesitas es deseo y voluntad"</h1>
-        <a href="#" class="btn-white">Expediente</a>
+        <a href="#" class="btn-white">Perfil</a>
     </div>
     <aside id="sidebar">
         <div id="nav-blog" class="sidebar-item">
