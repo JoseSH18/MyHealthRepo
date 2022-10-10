@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/inicio', function () {
-    return view('inicio');
+
+Route::get('/', function () {
+    return view('home');
 });
 
+
+Route::get('/home', function () {
+    return view('home');
+});
 Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 'index'])->name('paciente.index');
 Auth::routes();
 

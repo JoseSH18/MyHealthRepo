@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+
+
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+}
+
+#header {
+    height: 120px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    border-top: 5px solid #ff920a;
+}
+#izq{
+    float: left;
+    margin-left: 30%;
+    margin-top: 10%;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+}
+#der{
+    float: right;
+    margin-right: 30%;
+    margin-top: 10%;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+}
