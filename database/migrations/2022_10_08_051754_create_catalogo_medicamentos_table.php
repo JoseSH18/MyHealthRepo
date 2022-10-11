@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('catalogo_medicamentos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('medicamento_id')->constrained('medicamentos');
-            $table->foreignId('expediente_id')->constrained('expedientes');
+            $table->foreignId('medicamento_id')->constrained('medicamentos')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('expediente_id')->constrained('expedientes')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

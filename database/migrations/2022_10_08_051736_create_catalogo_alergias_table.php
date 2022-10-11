@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('catalogo_alergias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('alergia_id')->constrained('alergias');
-            $table->foreignId('expediente_id')->constrained('expedientes');
+            $table->foreignId('alergia_id')->constrained('alergias')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('expediente_id')->constrained('expedientes')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

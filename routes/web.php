@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Spatie\Permission\Models\Role;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +24,12 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
-Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 'index'])->name('paciente.index');
 
-Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->name('medico.index');
+Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 'index'])->middleware('can:paciente.index')->name('paciente.index');
+
+
+Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->middleware('can:medico.index')->name('medico.index');
+
 Auth::routes();
 
 

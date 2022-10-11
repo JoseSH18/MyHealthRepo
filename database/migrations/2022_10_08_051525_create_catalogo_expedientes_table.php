@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('catalogo_expedientes', function (Blueprint $table) {
             
             $table->id();
-            $table->foreignId('expediente_id')->constrained('expedientes');
+            $table->foreignId('expediente_id')->constrained('expedientes')->onUpdate('cascade')->onDelete('cascade');
             $table->string('cedula_paciente', 10);
-            $table->foreign('cedula_paciente')->references('cedula')->on('pacientes');
+            $table->foreign('cedula_paciente')->references('cedula')->on('pacientes')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
