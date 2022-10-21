@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('expedientes', function (Blueprint $table) {
+        Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->string('cedula_paciente', 10);
-            $table->foreign('cedula_paciente')->references('cedula')->on('pacientes')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('presion', 20);
-            $table->string('azucar', 15);
+            $table->foreign('cedula_paciente')->references('cedula')->on('patients')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('codigo_medico', 10);
+            $table->foreign('codigo_medico')->references('codigo')->on('medicos')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('fechaHora', 25);
+            $table->string('estado', 10);
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expedientes');
+        Schema::dropIfExists('appointments');
     }
 };

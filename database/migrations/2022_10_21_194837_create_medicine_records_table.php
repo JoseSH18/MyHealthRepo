@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('catalogo_expedientes', function (Blueprint $table) {
-            
+        Schema::create('medicine_records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('expediente_id')->constrained('expedientes')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('cedula_paciente', 10);
-            $table->foreign('cedula_paciente')->references('cedula')->on('pacientes')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('medicamento_id')->constrained('medicines')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('expediente_id')->constrained('records')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalogo_expedientes');
+        Schema::dropIfExists('medicine_records');
     }
 };

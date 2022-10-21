@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('medicamentos', function (Blueprint $table) {
+        Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 20);
-            $table->string('detalleDosis', 30);
+            $table->string('cedula_paciente', 10);
+            $table->foreign('cedula_paciente')->references('cedula')->on('patients')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('presion', 20);
+            $table->string('azucar', 15);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medicamentos');
+        Schema::dropIfExists('records');
     }
 };
