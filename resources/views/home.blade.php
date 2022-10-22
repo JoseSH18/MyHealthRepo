@@ -6,83 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Página de Inicio - MyHealth</title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
-    <link rel="stylesheet" href="/build/assets/homestyle.dc6a3f91.css">
-    <style>
-        .card-container {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          margin-top: 16px;
-        }
-        .card {
-          all: unset;
-          border-radius: 4px;
-          border: 1px solid rgb(238, 238, 238);
+    <link rel="stylesheet" href="/build/assets/homestyle.a41ce1cf.css">
 
-          height: 200px;
-          width: 500px;
-          margin: 0 8px 16px;
-          padding: 16px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items:center;
-          transition: all 0.2s ease-in-out;
-          line-height: 24px;
-        }
-        #card1{
-            background-color: #e4806f;
-        }
-        #card2{
-            background-color: #08cf7c;
-        }
-      
-        .card-container .card:not(:last-child) {
-          margin-right: 0;
-        }
-      
-        .card.card-small {
-          height: 16px;
-          width: 168px;
-        }
-      
-        .card-container .card:not(.highlight-card) {
-          cursor: pointer;
-        }
-      
-        .card-container .card:not(.highlight-card):hover {
-          transform: translateY(-3px);
-          box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-        }
-        body{
-        background-image: url({{asset('/images/abstracto.png')}});
-
-        }
-        .card-container .card:not(.highlight-card):hover .material-icons path {
-          fill: rgb(105, 103, 103);
-        }
-      
-        a,
-        a:visited,
-        a:hover {
-          color: #1f4baa;
-          text-decoration: none;
-        }
-      
-        a:hover {
-          color: #b41861;
-        } 
-    
-      
-    .app-logo-pac{
-        width: 78%;
-    }
-      
-    
-      
-    
-        
-      </style>
 </head>
 <body>
     <header id="header">

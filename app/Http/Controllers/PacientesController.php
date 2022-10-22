@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Paciente;
+use App\Models\patient;
+use App\Models\appointment;
+use App\Models\medico;
+
 
 
 class PacientesController extends Controller
@@ -20,5 +23,21 @@ class PacientesController extends Controller
         return view('paciente.index');
     }
 
+    public function historial(Request $request){
+
+        $texto=trim($request->get('texto'));
+        if ($texto!=null) {
+            $appointments = appointment::where('estado','LIKE', '%'.$texto.'%')->paginate();
+        }else{
+            $appointments = appointment::All();
+        }
+       
+        return view('paciente.historial', 
+        [
+            'appointments' => $appointments,
+            'texto' => $texto
+        ]
+        );
+    }
 
 }

@@ -10,10 +10,10 @@ class appointment extends Model
     use HasFactory;
     public function patient()
     {
-        return $this->belongsTo(patient::class, 'paciente_id');
+        return $this->belongsTo(patient::class, 'cedula_paciente');
     }
     public function medico()
     {
-        return $this->belongsTo(medico::class, 'medico_id');
+        return $this->belongsTo(medico::class, 'codigo_medico');
     }
 }

@@ -24,10 +24,16 @@
             <nav id="menu">
                 <ul>
                     <li>
-                        <a><h3>Inicio</h3></a>
+                    <a class="card" href="{{route('home')}}" id="card1" >
+                            {{ csrf_field() }}
+                        <span><h3>Inicio</h3></span>
+                    </a>
                     </li>
                     <li>
-                        <a><h3>Citas</h3></a>
+                        <a class="card" href="{{route('paciente.historial')}}" id="card1" >
+                            {{ csrf_field() }}
+                        <span><h3>Citas</h3></span>
+                    </a>
                     </li>
                     <li>
                         <a><h3>Doctores</h3></a>

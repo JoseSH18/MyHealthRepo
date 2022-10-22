@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('cedula_paciente')->references('cedula')->on('patients')->onUpdate('cascade')->onDelete('cascade');
             $table->string('codigo_medico', 10);
             $table->foreign('codigo_medico')->references('codigo')->on('medicos')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('fechaHora', 25);
+            $table->timestamp('fechaHora');
             $table->string('estado', 10);
             $table->timestamps();
         });

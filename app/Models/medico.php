@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class medico extends Model
 {
+    protected $primaryKey = 'codigo';
     use HasFactory;
     public function records()
     {
@@ -16,4 +17,8 @@ class medico extends Model
     {
         return $this->hasMany(appointment::class);
     }
+    public function getNombreCompletoAttribute()
+    {
+        return $this->nombre1 . ' ' . $this->nombre2 . ' ' . $this->apellido1. ' ' . $this->apellido2;
+    } 
 }

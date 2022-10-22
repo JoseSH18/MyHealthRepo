@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class patient extends Model
 {
+    protected $primaryKey = 'cedula';
     use HasFactory;
     public function record()
     {
@@ -17,4 +18,9 @@ class patient extends Model
     {
         return $this->hasMany(appointment::class);
     }
+
+    public function getNombreCompletoAttribute()
+    {
+        return $this->nombre1 . ' ' . $this->nombre2 . ' ' . $this->apellido1. ' ' . $this->apellido2;
+    } 
 }
