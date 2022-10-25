@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('correo', 15);
             $table->string('consultorio', 25);
             $table->string('detalleMedico', 25);
+            $table->string('especialidad', 20);
+            $table->string('servicio', 20);
             $table->string('direccion', 20);
             $table->timestamps();
         });
