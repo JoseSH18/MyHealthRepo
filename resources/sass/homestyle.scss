@@ -1,67 +1,49 @@
 body {
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
 
 
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: antialiased;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
 }
-
 #header {
-    height: 120px;
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    border-top: 5px solid #ff920a;
+  height: 120px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  border-top: 5px solid #ff920a;
 }
-#izq{
-    float: left;
-    margin-left: 30%;
-    margin-top: 10%;
-    border-bottom: 2px solid #ccc;
-    border-top: 2px solid #ccc;
-    border-right: 2px solid #ccc;
-    border-left: 2px solid #ccc;
-}
-#der{
-    float: right;
-    margin-right: 30%;
-    margin-top: 10%;
-    border-bottom: 2px solid #ccc;
-    border-top: 2px solid #ccc;
-    border-right: 2px solid #ccc;
-    border-left: 2px solid #ccc;
-}
-.card-container {
+
+  .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 16px;
   }
+
   .card {
     all: unset;
     border-radius: 4px;
     border: 1px solid rgb(238, 238, 238);
-
     height: 200px;
     width: 500px;
     margin: 0 8px 16px;
     padding: 16px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     transition: all 0.2s ease-in-out;
     line-height: 24px;
   }
   #card1{
-      background-color: #e4806f;
-  }
-  #card2{
-      background-color: #08cf7c;
-  }
+    background-color: #907cdb;
+}
+#card2{
+    background-color: #7cc7a8;
+}
 
   .card-container .card:not(:last-child) {
     margin-right: 0;
@@ -80,10 +62,7 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
   }
-  body{
-  background-image: url('/public/images/abstracto.png');
 
-  }
   .card-container .card:not(.highlight-card):hover .material-icons path {
     fill: rgb(105, 103, 103);
   }
@@ -96,7 +75,7 @@ body {
   }
 
   a:hover {
-    color: #b41861;
+    color: #b41866;
   } 
 
 

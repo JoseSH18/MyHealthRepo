@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Página de Inicio - MyHealth</title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
-    <link rel="stylesheet" href="/build/assets/homestyle.a41ce1cf.css">
-
+    <link rel="stylesheet" href="/build/assets/homestyle.2b70f1b2.css">
 </head>
 <body>
     <header id="header">
@@ -25,21 +24,18 @@
             <div class="clearfix"></div>
         </div>
     </header>
-    <div class="card-container" id="cont">
-        
-        <a class="card" target="_self" rel="noopener" href="{{route('medico.index')}}" id="card1" >
-            {{ csrf_field() }}
-        <img src="{{asset('images/medico.png')}}" class="app-logo-doc" alt="Logotipo" width="72"  />
-          <span>Médico</span>
+<div class="card-container">
+    <a class="card" target="_self" rel="noopener" href="{{route('medico.index')}}" id="card1">
+    <img src="{{asset('images/doc.svg')}}" class="app-logo-doc" alt="Logotipo" />
+      <span>Doctor</span>
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </a>
+    <a class="card" target="_self" rel="noopener" href="{{route('paciente.index')}}" id="card2">
+        <img src="{{asset('images/pac.svg')}}" class="app-logo-pac" alt="Logotipo" />
+          <span>Paciente</span>
           <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
         </a>
-        <a class="card" target="_self" rel="noopener" href="{{route('paciente.index')}}" id="card2">
-            {{ csrf_field() }}
-            <img src="{{asset('images/paciente.png')}}" class="app-logo-doc" alt="Logotipo" width="72" />
-              <span>Paciente</span>
-              <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-            </a>
-      </div>
+  </div>
 
         
 </body>
