@@ -30,6 +30,7 @@
                 <table id="categories" class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>Id de cita</th>
                             <th>Nombre de paciente</th>
                             <th>Fecha y hora</th>
                             <th>Tipo de servicio</th>
@@ -42,6 +43,7 @@
                     <tbody>
                         @foreach ($appointments as $appointment)
                         <tr>
+                            <td>{{$appointment->id}}</td>
                             <td>{{$appointment->patient->getNombreCompletoAttribute()}}</td>
                             <td>{{$appointment->fechaHora}}</td>
                             <td>{{$appointment->medico->servicio}}</td>
@@ -54,6 +56,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
+                            <th>Id de cita</th>
                             <th>Nombre de paciente</th>
                             <th>Fecha y hora</th>
                             <th>Tipo de servicio</th>

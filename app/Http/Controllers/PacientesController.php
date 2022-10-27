@@ -35,7 +35,8 @@ class PacientesController extends Controller
             {
                 $join->on('cedula_paciente', '=', 'patients.cedula')
                 ->where('patients.correo', '=', $correo)
-                ->where('patients.nombre1','LIKE', '%'.$texto.'%');
+                ->where('appointments.fechaHora','LIKE', '%'.$texto.'%')
+                ->orwhere('appointments.id','LIKE', '%'.$texto.'%');
 
                 
             })

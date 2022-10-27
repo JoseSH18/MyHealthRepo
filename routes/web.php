@@ -24,6 +24,16 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 })->name('home');
+Route::get('/option', function () {
+    return view('auth/option');
+})->name('option');
+Route::get('/pacienteregister', function () {
+    return view('auth/pacienteregister');
+})->name('pacienteregister');
+Route::get('/medicoregister', function () {
+    return view('auth/medicoregister');
+})->name('medicoregister');
+
 
 Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 'index'])->middleware('can:paciente.index')->name('paciente.index');
 Route::get('/paciente/historial', [App\Http\Controllers\PacientesController::class, 'historial'])->name('paciente.historial');
