@@ -51,11 +51,38 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+
+        if(array_key_exists('cedula', $data)){
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:25'],
+                'nombre2' => ['string', 'max:25'],
+                'apellido1' => ['required', 'string', 'max:25'],
+                'apellido2' => ['string', 'max:25'],
+                'telefono' => ['required','integer', 'max:10'],
+                'estadocivil' => ['required','string', 'max:15'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'cedula' => ['required', 'string', 'max:10', 'unique:patients'],
+            ]);
+        }else{
+ 
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:25'],
+                'nombre2' => ['string', 'max:25'],
+                'apellido1' => ['required', 'string', 'max:25'],
+                'apellido2' => ['string', 'max:25'],
+
+                'consultorio' => ['required', 'string', 'max:25'],
+                'detalleMedico' => ['required', 'string', 'max:25'],
+                'especialidad' => ['required', 'string', 'max:20'],
+                'servicio' => ['required', 'string', 'max:20'],
+                'direccion' => ['required', 'string', 'max:20'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'codigo' => ['required', 'string', 'max:10', 'unique:medicos'],
+            ]);
+        }
+       
     }
 
     /**
@@ -74,6 +101,7 @@ class RegisterController extends Controller
         ]);
         $user->assignRole($data['role']);
         if($data['role'] == "Paciente"){
+            
             $newPaciente = new patient();
             $newPaciente->nombre1 = $data['name'];
             $newPaciente->nombre2 = $data['nombre2'];
@@ -93,7 +121,7 @@ class RegisterController extends Controller
             $newMedico->codigo = $data['codigo'];
             $newMedico->correo = $data['email'];
             $newMedico->telefono = $data['telefono'];
-            $newMedico->detalleMedico = $data['detallemedico'];
+            $newMedico->detalleMedico = $data['detalleMedico'];
             $newMedico->direccion = $data['direccion'];
             $newMedico->consultorio = $data['consultorio'];
             $newMedico->especialidad = $data['especialidad'];

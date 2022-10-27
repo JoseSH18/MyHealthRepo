@@ -5,12 +5,10 @@
 @section('content_header')
 <h1>
     Historial de Citas
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-cita">
-        Reservar Cita
-    </button>
+
     <div class="card-header">
         <form action="{{route('paciente.historial')}}" method="get">
-    <input type="text" name="texto" class="form-control" placeholder="Ingrese nombre de médico o número de cita a buscar" value="{{$texto}}">
+    <input type="text" name="texto" class="form-control" placeholder="Ingrese id de cita o la fecha de cita" value="{{$texto}}">
     <input type="submit" class="btn btn-primary" value="Buscar">
 </form>
 </div>

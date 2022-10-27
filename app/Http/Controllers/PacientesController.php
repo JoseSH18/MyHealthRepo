@@ -34,13 +34,13 @@ class PacientesController extends Controller
             $appointments = appointment::join('patients', function($join) use($correo, $texto)
             {
                 $join->on('cedula_paciente', '=', 'patients.cedula')
-                ->where('patients.correo', '=', $correo)
-                ->where('appointments.fechaHora','LIKE', '%'.$texto.'%')
-                ->orwhere('appointments.id','LIKE', '%'.$texto.'%');
+                ->where('patients.correo', '=', $correo);
+                   
+            })->Where(function($query) use($correo, $texto) {
+                $query->where('appointments.fechaHora','LIKE', '%'.$texto.'%')
+                ->orWhere('appointments.id','LIKE', '%'.$texto.'%');
+            })->get();     
 
-                
-            })
-            ->get();
         }else{
             $appointments = appointment::join('patients', function($join) use($correo)
         {

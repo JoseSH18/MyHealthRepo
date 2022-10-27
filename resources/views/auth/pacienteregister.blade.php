@@ -15,7 +15,12 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="cedula" type="text" class="form-control" name="cedula" required autocomplete="new-nombre2">
+                                <input id="cedula" type="text" class="form-control @error('cedula') is-invalid @enderror" value="{{ old('cedula') }}" name="cedula" required autocomplete="new-nombre2">
+                                @error('cedula')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
                         
@@ -37,7 +42,7 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="nombre2" type="text" class="form-control" name="nombre2" required autocomplete="new-nombre2">
+                                <input id="nombre2" type="text" class="form-control" name="nombre2" >
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -53,7 +58,7 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="apellido2" type="text" class="form-control" name="apellido2" required autocomplete="new-apellido2">
+                                <input id="apellido2" type="text" class="form-control" name="apellido2" >
                             </div>
                         </div>
                         <div class="row mb-3">

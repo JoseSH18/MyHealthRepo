@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->string('cedula', 10)->primary();
             $table->string('nombre1', 25);
-            $table->string('nombre2', 25);
+            $table->string('nombre2', 25)->nullable();
             $table->string('apellido1', 25);
-            $table->string('apellido2', 25);
+            $table->string('apellido2', 25)->nullable();
             $table->integer('telefono');
             $table->string('correo', 15);
             $table->string('estadocivil', 15);

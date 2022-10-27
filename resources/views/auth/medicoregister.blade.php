@@ -16,7 +16,12 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="codigo" type="text" class="form-control" name="codigo" required autocomplete="new-codigo">
+                                <input id="codigo" type="text" class="form-control @error('codigo') is-invalid @enderror" value="{{ old('codigo') }}" name="codigo" required autocomplete="new-codigo">
+                                @error('codigo')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -37,7 +42,7 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="nombre2" type="text" class="form-control" name="nombre2" required autocomplete="new-nombre2">
+                                <input id="nombre2" type="text" class="form-control" name="nombre2" >
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -53,7 +58,7 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="apellido2" type="text" class="form-control" name="apellido2" required autocomplete="new-apellido2">
+                                <input id="apellido2" type="text" class="form-control" name="apellido2" >
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -98,11 +103,11 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="detallemedico" class="col-md-4 col-form-label text-md-end">{{ __('Detalle de Médico') }}</label>
+                            <label for="detalleMedico" class="col-md-4 col-form-label text-md-end">{{ __('Detalle de Médico') }}</label>
 
                             <div class="col-md-6">
                                 
-                                <textarea id="detallemedico" class="form-control" name="detallemedico" required autocomplete="new-detallemedico"></textarea>
+                                <textarea id="detalleMedico" class="form-control" name="detalleMedico" required autocomplete="new-detalleMedico"></textarea>
                             </div>
                         </div>
 
