@@ -30,30 +30,36 @@
                 <table id="categories" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Id Cita</th>
-                            <th>Fecha y Hora</th>
                             <th>Nombre de paciente</th>
+                            <th>Fecha y hora</th>
+                            <th>Tipo de servicio</th>
+                            <th>Tipo de especialidad</th>
                             <th>Nombre de médico</th>
+                            <th>Consultorio</th>
                             <th>Estado</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($appointments as $appointment)
                         <tr>
-                            <td>{{$appointment->id}}</td>
-                            <td>{{$appointment->fechaHora}}</td>
                             <td>{{$appointment->patient->getNombreCompletoAttribute()}}</td>
+                            <td>{{$appointment->fechaHora}}</td>
+                            <td>{{$appointment->medico->servicio}}</td>
+                            <td>{{$appointment->medico->especialidad}}</td>
                             <td>{{$appointment->medico->getNombreCompletoAttribute()}}</td>
+                            <td>{{$appointment->medico->consultorio}}</td>
                             <td>{{$appointment->estado}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Id Cita</th>
-                            <th>Fecha y Hora</th>
                             <th>Nombre de paciente</th>
+                            <th>Fecha y hora</th>
+                            <th>Tipo de servicio</th>
+                            <th>Tipo de especialidad</th>
                             <th>Nombre de médico</th>
+                            <th>Consultorio</th>
                             <th>Estado</th>
                         </tr>
                     </tfoot>
