@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medico;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -24,12 +25,28 @@ class PacientesController extends Controller
     }
 
     public function historial(Request $request){
+        $user = Auth::user();
+        $correo = $user->email;
+        
 
         $texto=trim($request->get('texto'));
         if ($texto!=null) {
-            $appointments = appointment::where('estado','LIKE', '%'.$texto.'%')->paginate();
+            $appointments = appointment::join('patients', function($join) use($correo, $texto)
+            {
+                $join->on('cedula_paciente', '=', 'patients.cedula')
+                ->where('patients.correo', '=', $correo)
+                ->where('patients.nombre1','LIKE', '%'.$texto.'%');
+
+                
+            })
+            ->get();
         }else{
-            $appointments = appointment::All();
+            $appointments = appointment::join('patients', function($join) use($correo)
+        {
+            $join->on('cedula_paciente', '=', 'patients.cedula')
+                 ->where('patients.correo', '=', $correo);
+        })
+        ->get();
         }
        
         return view('paciente.historial', 
