@@ -7,7 +7,7 @@
     <title>MyHealth - Homepage </title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/build/assets/pacientestyle.d237edc9.css">
+    <link rel="stylesheet" href="/build/assets/pacientestyle.ea27092c.css">
 </head>
 <body>
     <header id="header">
@@ -74,25 +74,15 @@
     </div>
     <aside id="sidebar">
         <div id="nav-blog" class="sidebar-item">
-            <h3>intenta reservar</h3>
-            <a href="#" class="btn btn-success">reservar cita</a>
-        </div>
-        <div id="search" class="sidebar-item">
-                <h3>Buscador</h3>
-                <p>Encuentra lo que buscas</p>
-                
-                <form>
-                    <input type="text" name="search" />
-                    <p></p>
-                    <input type="submit" name="submit" value="Buscar" class="btn" />
-                </form>
+            <h3>Intenta Reservar</h3>
+            <a href="#" class="btn btn-success">Reservar cita</a>
         </div>
     </aside>
-    <section id="section">
+    <footer id="section">
         
         <div class="row text-center p-4">
             <div class="mb-3">
-                <img src="{{asset('images/corazon.svg')}}" alt="MyHealth logo" width="120" id="logofooter">
+                <img src="{{asset('images/corazon.svg')}}" alt="MyHealth logo" width="60" id="logofooter">
             </div>
             <div id="col-md-10">
                 <a href="https://www.facebook.com/myhealth">
@@ -107,7 +97,7 @@
                 <p class="mt-3">Copyright © 2022 MyHealth. <br> Todos los derechos reservados.</p>
             </div>
         </div>
-    </section>
+    </footer>
 
 
     <div class="clearfix"></div>
