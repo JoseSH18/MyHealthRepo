@@ -58,4 +58,10 @@ class PacientesController extends Controller
         );
     }
 
+    public function grafica_de_Azucar(Request $request){
+
+        
+        return view('paciente.grafica_de_Azucar');
+    }
+
 }

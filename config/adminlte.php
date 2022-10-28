@@ -320,6 +320,12 @@ return [
             'icon' => 'fas fa-hospital-symbol',
             'can'  => 'paciente.historial',
         ],
+        [
+            'text' => 'Grafica de Azucar',
+            'url'  => 'paciente/grafica_de_Azucar',
+            'icon' => 'fas fa-hospital-symbol',
+            'can'  => 'paciente.grafica_de_Azucar',
+        ],
 
         ['header' => 'Médico'],
         [

@@ -35,8 +35,10 @@ Route::get('/medicoregister', function () {
 })->name('medicoregister');
 
 
+
 Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 'index'])->middleware('can:paciente.index')->name('paciente.index');
 Route::get('/paciente/historial', [App\Http\Controllers\PacientesController::class, 'historial'])->name('paciente.historial');
+Route::get('/paciente/grafica_de_Azucar', [App\Http\Controllers\PacientesController::class, 'grafica_de_Azucar'])->name('paciente.grafica_de_Azucar');
 
 Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->middleware('can:medico.index')->name('medico.index');
 
