@@ -38,4 +38,9 @@ class record extends Model
     {
         return $this->hasMany(sugar::class);
     }
+
+    public function reminders()
+    {
+        return $this->hasMany(reminder::class);
+    }
 }

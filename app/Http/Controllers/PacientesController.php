@@ -24,6 +24,35 @@ class PacientesController extends Controller
         return view('paciente.index');
     }
 
+    public function perfil(Request $request){
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
+        return view('paciente.perfil',   [
+            'patients' => $patients,
+        ]);
+    }
+
+    public function update(Request $request, $cedula_paciente){
+        $patient = patient::find($cedula_paciente);
+        $user = Auth::user();
+        $patient->nombre1 = $request->nombre1;
+        $patient->nombre2 = $request->nombre2;
+        $patient->apellido1 = $request->apellido1;
+        $patient->apellido2 = $request->apellido2;
+        $patient->estadocivil = $request->estadocivil;
+        $patient->telefono = $request->telefono;
+        $patient->correo = $request->correo;
+
+        $user->name = $request->nombre1;
+        $user->email = $request->correo;
+
+        $patient->save();
+        $user->save();
+
+        return redirect()->back();
+
+    }
+
     public function historial(Request $request){
         $user = Auth::user();
         $correo = $user->email;

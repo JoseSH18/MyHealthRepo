@@ -66,7 +66,7 @@
 
                             <div class="col-md-6">
                                 
-                                <input id="telefono" type="text" class="form-control" name="telefono" required autocomplete="new-telefono">
+                                <input id="telefono" type="number" class="form-control" name="telefono" required autocomplete="new-telefono">
                             </div>
                         </div>
                         <div class="row mb-3">
