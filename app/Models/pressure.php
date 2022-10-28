@@ -10,6 +10,6 @@ class pressure extends Model
     use HasFactory;
     public function record()
     {
-        return $this->belongsTo(record::class, 'record_id');
+        return $this->belongsTo(record::class, 'expediente_id');
     }
 }
