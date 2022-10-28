@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('cedula_paciente', 10);
             $table->foreign('cedula_paciente')->references('cedula')->on('patients')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('pressure_id')->constrained('pressures')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('sugar_id')->constrained('sugar')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

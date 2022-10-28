@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/build/assets/optionstyle.5bf22a11.css">
     <title>Escoger tipo de registro</title>
 </head>
+<header>
+  <h1>Escoja con cual rol quiere registrarse</h1>
+</header>
 <body>
     <div class="card-container" id="cont">
         
