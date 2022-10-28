@@ -58,9 +58,9 @@ class RegisterController extends Controller
                 'nombre2' => ['string', 'max:25'],
                 'apellido1' => ['required', 'string', 'max:25'],
                 'apellido2' => ['string', 'max:25'],
-                'telefono' => ['required','integer', 'max:10'],
+
                 'estadocivil' => ['required','string', 'max:15'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'email' => ['required', 'string', 'email', 'max:40', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'cedula' => ['required', 'string', 'max:10', 'unique:patients'],
             ]);
@@ -77,7 +77,7 @@ class RegisterController extends Controller
                 'especialidad' => ['required', 'string', 'max:20'],
                 'servicio' => ['required', 'string', 'max:20'],
                 'direccion' => ['required', 'string', 'max:20'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'email' => ['required', 'string', 'email', 'max:40', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'codigo' => ['required', 'string', 'max:10', 'unique:medicos'],
             ]);

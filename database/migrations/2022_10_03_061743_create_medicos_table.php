@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('apellido1', 25);
             $table->string('apellido2', 25)->nullable();
             $table->integer('telefono');
-            $table->string('correo', 15);
+            $table->string('correo', 40);
             $table->string('consultorio', 25);
             $table->string('detalleMedico', 25);
             $table->string('especialidad', 20);
