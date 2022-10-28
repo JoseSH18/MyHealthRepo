@@ -36,9 +36,14 @@ Route::get('/medicoregister', function () {
 
 
 Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 'index'])->middleware('can:paciente.index')->name('paciente.index');
-Route::get('/paciente/historial', [App\Http\Controllers\PacientesController::class, 'historial'])->name('paciente.historial');
+Route::get('/paciente/historial', [App\Http\Controllers\PacientesController::class, 'historial'])->middleware('can:paciente.historial')->name('paciente.historial');
+Route::get('/paciente/perfil', [App\Http\Controllers\PacientesController::class, 'perfil'])->middleware('can:paciente.perfil')->name('paciente.perfil');
+Route::post('/paciente/{cedula_paciente}/update', [App\Http\Controllers\PacientesController::class, 'update'])->middleware('can:paciente.update')->name('paciente.update');
+
 
 Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->middleware('can:medico.index')->name('medico.index');
+Route::get('/medico/perfil', [App\Http\Controllers\MedicosController::class, 'perfil'])->middleware('can:medico.perfil')->name('medico.perfil');
+Route::post('/medico/{codigo_medico}/update', [App\Http\Controllers\MedicosController::class, 'update'])->middleware('can:medico.update')->name('medico.update');
 
 Auth::routes();
 

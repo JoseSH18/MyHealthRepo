@@ -311,7 +311,7 @@ return [
         [
             'text' => 'Inicio',
             'url'  => 'paciente/index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa fa-home',
             'can'  => 'paciente.index',
         ],
         [
@@ -320,13 +320,25 @@ return [
             'icon' => 'fas fa-hospital-symbol',
             'can'  => 'paciente.historial',
         ],
+        [
+            'text' => 'Mi Perfil',
+            'url'  => 'paciente/perfil',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => 'paciente.perfil',
+        ],
 
         ['header' => 'Médico'],
         [
             'text' => 'Inicio',
             'url'  => 'medico/index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa fa-home',
             'can'  => 'medico.index',
+        ],
+        [
+            'text' => 'Mi Perfil',
+            'url'  => 'medico/perfil',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => 'medico.perfil',
         ],
 
     ],
