@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('records', function (Blueprint $table) {
+        Schema::create('pressures', function (Blueprint $table) {
             $table->id();
-            $table->string('cedula_paciente', 10);
-            $table->foreign('cedula_paciente')->references('cedula')->on('patients')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('presion', 20);
-            $table->string('azucar', 15);
+            $table->string('valor', 30);
+            $table->datetime('fecha');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('records');
+        Schema::dropIfExists('pressures');
     }
 };

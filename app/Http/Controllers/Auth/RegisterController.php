@@ -58,7 +58,6 @@ class RegisterController extends Controller
                 'nombre2' => ['string', 'max:25'],
                 'apellido1' => ['required', 'string', 'max:25'],
                 'apellido2' => ['string', 'max:25'],
-
                 'estadocivil' => ['required','string', 'max:15'],
                 'email' => ['required', 'string', 'email', 'max:40', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -71,7 +70,6 @@ class RegisterController extends Controller
                 'nombre2' => ['string', 'max:25'],
                 'apellido1' => ['required', 'string', 'max:25'],
                 'apellido2' => ['string', 'max:25'],
-
                 'consultorio' => ['required', 'string', 'max:25'],
                 'detalleMedico' => ['required', 'string', 'max:25'],
                 'especialidad' => ['required', 'string', 'max:20'],
