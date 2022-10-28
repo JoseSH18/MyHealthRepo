@@ -29,13 +29,13 @@ class record extends Model
         return $this->hasOne(patient::class, 'cedula_paciente');
     }
 
+    public function pressures()
+    {
+        return $this->hasMany(pressure::class);
+    }
+
     public function sugar()
     {
         return $this->hasMany(sugar::class);
-    }
-
-    public function pressure()
-    {
-        return $this->hasMany(pressure::class);
     }
 }

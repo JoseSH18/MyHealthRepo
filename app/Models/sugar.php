@@ -10,6 +10,6 @@ class sugar extends Model
     use HasFactory;
     public function record()
     {
-        return $this->hasOne(record::class, 'sugar_id');
+        return $this->belongsTo(record::class, 'sugar_id');
     }
 }

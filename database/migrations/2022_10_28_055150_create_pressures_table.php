@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pressures', function (Blueprint $table) {
             $table->id();
             $table->string('valor', 30);
+            $table->foreignId('expediente_id')->constrained('records')->onUpdate('cascade')->onDelete('cascade');
             $table->datetime('fecha');
             $table->timestamps();
         });
