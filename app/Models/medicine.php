@@ -12,4 +12,8 @@ class medicine extends Model
     {
         return $this->belongsToMany(record::class, 'medicine_record', 'record_id', 'medicine_id');
     }
+    public function reminders()
+    {
+        return $this->hasMany(reminder::class);
+    }
 }
