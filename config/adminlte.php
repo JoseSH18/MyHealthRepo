@@ -323,7 +323,7 @@ return [
 
         [ 'text' => 'Grafica de Azucar',
         'url'  => 'paciente/grafica_de_Azucar',
-        'icon' => 'fas fa-hospital-symbol',
+        'icon' => 'fas fa-candy-cane',
         'can'  => 'paciente.grafica_de_Azucar',],
         [
             'text' => 'Mi Perfil',

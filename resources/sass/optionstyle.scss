@@ -1,9 +1,20 @@
+#header {
+  height: 120px;
+  width: 100%;
+  background-color: #abf1dc;
+  border-top: 5px solid #fdfcc2;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+}
+
 body {
     text-align: center;
     margin: 0px;
     padding: 0px;
 
-
+    background-color: #b2f3e5;
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;

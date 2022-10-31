@@ -17,6 +17,12 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+<style>
+
+    body{
+        background-color: rgb(243, 199, 247)
+    }
+</style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

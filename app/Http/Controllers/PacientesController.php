@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\sugar;
 use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medico;
-use App\Models\sugar;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -92,7 +92,7 @@ class PacientesController extends Controller
 
         $user = Auth::user();
         $patients = patient::firstWhere('correo', $user->email);
-        
+
         
         return view('paciente.grafica_de_Azucar',[ 'patients' => $patients,]);
     }
