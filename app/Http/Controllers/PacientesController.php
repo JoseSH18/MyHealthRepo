@@ -11,8 +11,9 @@ use App\Models\medicine;
 use App\Models\reminder;
 use App\Models\record;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
-
+use App\Notifications\RecordatorioNuevoNotification;
 
 class PacientesController extends Controller
 {
@@ -96,36 +97,44 @@ class PacientesController extends Controller
         return view('paciente.grafica_de_Azucar');
     }
 
-    public function vista_recordatorio(Request $request){
+    public function recordatorios(Request $request){
+    $user = Auth::user();
+    $patients = patient::firstWhere('correo', $user->email);
+    $records = record::firstWhere('cedula_paciente', $patients->cedula);
+    $Medicines = medicine::all();
+    $Reminders = reminder::all();
+        return view('paciente.recordatorios' , [
+            'patients' => $patients, 'records' => $records , "Medicines" => $Medicines, "Reminders" =>$Reminders
+        ]);
+    }
 
+    public function vista_recordatorio(Request $request){
         $user = Auth::user();
         $correo = $user->email;
-        
         $patients = patient::firstWhere('correo', $user->email);
         $records = record::firstWhere('cedula_paciente', $patients->cedula);
         $Medicines = medicine::all();
-       
-
-
-
-
-
-
+        $Reminders = reminder::all();
         return view('paciente.agregar_recordatorio' , [
-            'patients' => $patients, 'records' => $records , "Medicines" => $Medicines,
+            'patients' => $patients, 'records' => $records , "Medicines" => $Medicines, "Reminders" =>$Reminders
         ]);
         
     }
 
     public function agregar_recordatorio(Request $request){
         $Recordatorio = new reminder();
-        $Recordatorio -> medicamento_id = $request -> medicamento_id;
-        $Recordatorio -> fechaInicio = $request -> fechaInicio;
-        $Recordatorio -> fechaFinal = $request -> fechaFinal;
-        $Recordatorio -> expediente_id = $request -> expediente_id;
+        $Recordatorio->medicamento_id = $request->medicamento_id;
+        $Recordatorio->fechaInicio = $request->fechaInicio;
+        $Recordatorio->fechaFinal = $request->fechaFinal;
+        $Recordatorio->expediente_id = $request->expediente_id;
 
         $Recordatorio -> save();
-        return redirect()->back();
+        $delay = now()->addMinutes(1);
+        $medicina = medicine::find($Recordatorio->medicamento_id);
+        $user = Auth::user();
+        $paciente = patient::firstWhere('correo', $user->email);
+        Notification::route('mail', Auth::user()->email)->notify((new RecordatorioNuevoNotification($Recordatorio, $medicina, $paciente))->delay($delay));
+        return redirect('/paciente/recordatorios');
     }
     
 
