@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/build/assets/optionstyle.5bf22a11.css">
+    <link rel="stylesheet" href="/build/assets/optionstyle.8ab2d76f.css">
     <title>Escoger tipo de registro</title>
 </head>
-<header>
+<header id="header">
   <h1>Escoja con cual rol quiere registrarse</h1>
 </header>
 <body>
