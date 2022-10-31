@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Paciente - Recordatorios')
+@section('title', 'Paciente - Historial de Recordatorios')
 
 @section('content_header')
 <h1>

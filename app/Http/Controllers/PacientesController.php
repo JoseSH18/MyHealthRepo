@@ -101,10 +101,11 @@ class PacientesController extends Controller
     $user = Auth::user();
     $patients = patient::firstWhere('correo', $user->email);
     $records = record::firstWhere('cedula_paciente', $patients->cedula);
-    $Medicines = medicine::all();
+    $Medicine = medicine::all();
     $Reminders = reminder::all();
-        return view('paciente.recordatorios' , [
-            'patients' => $patients, 'records' => $records , "Medicines" => $Medicines, "Reminders" =>$Reminders
+    
+        return view('paciente.recordatorios' , [    
+            'patients' => $patients, 'records' => $records , "Medicine" => $Medicine, "Reminders" =>$Reminders
         ]);
     }
 
