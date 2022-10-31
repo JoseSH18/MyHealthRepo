@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medico;
+use App\Models\medicine;
+use App\Models\reminder;
+use App\Models\record;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -92,5 +95,40 @@ class PacientesController extends Controller
         
         return view('paciente.grafica_de_Azucar');
     }
+
+    public function vista_recordatorio(Request $request){
+
+        $user = Auth::user();
+        $correo = $user->email;
+        
+        $patients = patient::firstWhere('correo', $user->email);
+        $records = record::firstWhere('cedula_paciente', $patients->cedula);
+        $Medicines = medicine::all();
+       
+
+
+
+
+
+
+        return view('paciente.agregar_recordatorio' , [
+            'patients' => $patients, 'records' => $records , "Medicines" => $Medicines,
+        ]);
+        
+    }
+
+    public function agregar_recordatorio(Request $request){
+        $Recordatorio = new reminder();
+        $Recordatorio -> medicamento_id = $request -> medicamento_id;
+        $Recordatorio -> fechaInicio = $request -> fechaInicio;
+        $Recordatorio -> fechaFinal = $request -> fechaFinal;
+        $Recordatorio -> expediente_id = $request -> expediente_id;
+
+        $Recordatorio -> save();
+        return redirect()->back();
+    }
+    
+
+    
 
 }

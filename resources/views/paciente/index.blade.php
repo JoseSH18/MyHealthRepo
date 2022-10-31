@@ -26,21 +26,27 @@
                     <li>
                     <a class="card" href="{{route('home')}}" id="card1" >
                             {{ csrf_field() }}
-                        <span><h3>Inicio</h3></span>
+                        <span><h4>Inicio</h4></span>
                     </a>
                     </li>
                     <li>
                         <a class="card" href="{{route('paciente.historial')}}" id="card1" >
                             {{ csrf_field() }}
-                        <span><h3>Citas</h3></span>
+                        <span><h4>Citas</h4></span>
                     </a>
                     </li>
                    
                     <li>
-                        <a><h3>Doctores</h3></a>
+                        <a><h4>Doctores</h4></a>
                     </li>
                     <li>
-                        <a><h3>Expediente</h3></a>
+                        <a><h4>Expediente</h4></a>
+                    </li>
+                    <li>
+                    <a class="card" href="{{route('paciente.vista_recordatorio')}}" id="card1" >
+                            {{ csrf_field() }}
+                        <span><h4>Recordatorios</h4></span>
+                    </a>
                     </li>
                     <li>
                         <li class="nav-item dropdown">
