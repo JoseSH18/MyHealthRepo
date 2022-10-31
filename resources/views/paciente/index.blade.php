@@ -7,7 +7,7 @@
     <title>MyHealth - Homepage </title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/build/assets/pacientestyle.0730def8.css">
+    <link rel="stylesheet" href="/build/assets/pacientestyle.7a9ae779.css">
 </head>
 <body>
     <header id="header">
@@ -26,7 +26,7 @@
                     <li>
                     <a class="card" href="{{route('home')}}" id="card1" >
                             {{ csrf_field() }}
-                        <span><h4>Inicio</h4></span>
+                        <span><h4>Home</h4></span>
                     </a>
                     </li>
                     <li>
@@ -37,7 +37,11 @@
                     </li>
                    
                     <li>
-                        <a><h4>Doctores</h4></a>
+                        <a class="card" href="{{route('paciente.buscar_medicos')}}" id="card1" >
+                            {{ csrf_field() }}
+                   
+                        <span><h4>Médicos</h4></span>
+                        </a>
                     </li>
                     <li>
                         <a><h4>Expediente</h4></a>
