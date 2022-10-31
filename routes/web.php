@@ -42,6 +42,8 @@ Route::get('/paciente/historial', [App\Http\Controllers\PacientesController::cla
 Route::get('/paciente/perfil', [App\Http\Controllers\PacientesController::class, 'perfil'])->middleware('can:paciente.perfil')->name('paciente.perfil');
 Route::post('/paciente/{cedula_paciente}/update', [App\Http\Controllers\PacientesController::class, 'update'])->middleware('can:paciente.update')->name('paciente.update');
 Route::get('/paciente/grafica_de_Azucar', [App\Http\Controllers\PacientesController::class, 'grafica_de_Azucar'])->name('paciente.grafica_de_Azucar');
+Route::get('/paciente/vista_recordatorio', [App\Http\Controllers\PacientesController::class, 'vista_recordatorio'])->name('paciente.vista_recordatorio');
+Route::post('/paciente/agregar_recordatorio', [App\Http\Controllers\PacientesController::class, 'agregar_recordatorio'])->name('paciente.agregar_recordatorio');
 
 
 Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->middleware('can:medico.index')->name('medico.index');
