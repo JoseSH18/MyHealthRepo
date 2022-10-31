@@ -338,6 +338,13 @@ return [
             'can'  => 'paciente.perfil',
 
         ],
+        [
+            'text' => 'Buscar Médicos',
+            'url'  => 'paciente/buscar_medicos',
+            'icon' => 'fas fa-medkit',
+            'can'  => 'paciente.buscar_medicos',
+
+        ],
 
         ['header' => 'Médico'],
         [
