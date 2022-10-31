@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Página de Inicio - MyHealth</title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
-    <link rel="stylesheet" href="/build/assets/homestyle.2b70f1b2.css">
+    <link rel="stylesheet" href="/build/assets/homestyle.97794292.css">
 </head>
 <body>
     <header id="header">
