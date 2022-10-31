@@ -47,7 +47,7 @@
                         <a><h4>Expediente</h4></a>
                     </li>
                     <li>
-                    <a class="card" href="{{route('paciente.vista_recordatorio')}}" id="card1" >
+                    <a class="card" href="{{route('paciente.recordatorios')}}" id="card1" >
                             {{ csrf_field() }}
                         <span><h4>Recordatorios</h4></span>
                     </a>

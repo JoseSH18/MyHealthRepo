@@ -10,6 +10,7 @@ use App\Models\appointment;
 use App\Models\medicine;
 use App\Models\record;
 use App\Models\reminder;
+use App\Models\medicine_record;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
@@ -115,37 +116,37 @@ class PacientesController extends Controller
 
     }
 
+
+   
+
     public function recordatorios(Request $request){
     $user = Auth::user();
     $patients = patient::firstWhere('correo', $user->email);
     $records = record::firstWhere('cedula_paciente', $patients->cedula);
-    $Medicine = medicine::all();
-    $Reminders = reminder::all();
+    $Medicinas = medicine::all();
+    $Reminders = reminder::where('expediente_id', $records->id)->get();    
+    $medicine_records = medicine_record::find($records->id);
+    $Medicines = medicine::find($medicine_records->medicamento_id); 
     
         return view('paciente.recordatorios' , [    
-            'patients' => $patients, 'records' => $records , "Medicine" => $Medicine, "Reminders" =>$Reminders
+            'patients' => $patients, 'records' => $records , "Medicines" => $Medicines, "Reminders" =>$Reminders, 'Medicinas'=>$Medicinas
         ]);
     }
-    public function vista_recordatorio(Request $request){
-        $user = Auth::user();
-        $correo = $user->email;
-        $patients = patient::firstWhere('correo', $user->email);
-        $records = record::firstWhere('cedula_paciente', $patients->cedula);
-        $Medicines = medicine::all();
-        $Reminders = reminder::all();
-        return view('paciente.agregar_recordatorio' , [
-            'patients' => $patients, 'records' => $records , "Medicines" => $Medicines, "Reminders" =>$Reminders
-        ]);
-        
-    }
-    public function agregar_recordatorio(Request $request){
+
+
+    public function agregar_recordatorio(Request $request){ 
         $Recordatorio = new reminder();
+        $medicine_records = new medicine_record();
+         
         $Recordatorio->medicamento_id = $request->medicamento_id;
         $Recordatorio->fechaInicio = $request->fechaInicio;
         $Recordatorio->fechaFinal = $request->fechaFinal;
         $Recordatorio->expediente_id = $request->expediente_id;
-
-        $Recordatorio -> save();
+        $medicine_records->expediente_id =$Recordatorio->expediente_id;
+        $medicine_records->medicamento_id =$Recordatorio->medicamento_id;
+        $Recordatorio->save();
+        $medicine_records->save();
+        
         $delay = now()->addMinutes(1);
         $medicina = medicine::find($Recordatorio->medicamento_id);
         $user = Auth::user();
@@ -156,6 +157,7 @@ class PacientesController extends Controller
     
     public function buscar_medicos(Request $request){
         $texto=trim($request->get('texto'));
+
 
         if($texto != null){
         $medicos = medico::where('nombre1','LIKE', '%'.$texto.'%')
