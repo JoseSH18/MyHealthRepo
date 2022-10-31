@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\sugar;
 use App\Models\patient;
 use App\Models\appointment;
-use App\Models\medico;
+use App\Models\medicine;
+use App\Models\record;
+use App\Models\reminder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
@@ -113,9 +115,6 @@ class PacientesController extends Controller
 
     }
 
-
-   
-
     public function recordatorios(Request $request){
     $user = Auth::user();
     $patients = patient::firstWhere('correo', $user->email);
@@ -127,7 +126,6 @@ class PacientesController extends Controller
             'patients' => $patients, 'records' => $records , "Medicine" => $Medicine, "Reminders" =>$Reminders
         ]);
     }
-
     public function vista_recordatorio(Request $request){
         $user = Auth::user();
         $correo = $user->email;
@@ -140,7 +138,6 @@ class PacientesController extends Controller
         ]);
         
     }
-
     public function agregar_recordatorio(Request $request){
         $Recordatorio = new reminder();
         $Recordatorio->medicamento_id = $request->medicamento_id;
@@ -159,7 +156,6 @@ class PacientesController extends Controller
     
     public function buscar_medicos(Request $request){
         $texto=trim($request->get('texto'));
-
 
         if($texto != null){
         $medicos = medico::where('nombre1','LIKE', '%'.$texto.'%')
