@@ -9,8 +9,9 @@ use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medico;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
-
+use App\Notifications\RecordatorioNuevoNotification;
 
 class PacientesController extends Controller
 {
@@ -90,6 +91,7 @@ class PacientesController extends Controller
 
     public function grafica_de_Azucar(Request $request){
 
+
         $user = Auth::user();
         $patients = patient::firstWhere('correo', $user->email);
 
@@ -111,6 +113,93 @@ class PacientesController extends Controller
 
     }
 
+
+   
+
+    public function recordatorios(Request $request){
+    $user = Auth::user();
+    $patients = patient::firstWhere('correo', $user->email);
+    $records = record::firstWhere('cedula_paciente', $patients->cedula);
+    $Medicine = medicine::all();
+    $Reminders = reminder::all();
+    
+        return view('paciente.recordatorios' , [    
+            'patients' => $patients, 'records' => $records , "Medicine" => $Medicine, "Reminders" =>$Reminders
+        ]);
+    }
+
+    public function vista_recordatorio(Request $request){
+        $user = Auth::user();
+        $correo = $user->email;
+        $patients = patient::firstWhere('correo', $user->email);
+        $records = record::firstWhere('cedula_paciente', $patients->cedula);
+        $Medicines = medicine::all();
+        $Reminders = reminder::all();
+        return view('paciente.agregar_recordatorio' , [
+            'patients' => $patients, 'records' => $records , "Medicines" => $Medicines, "Reminders" =>$Reminders
+        ]);
+        
+    }
+
+    public function agregar_recordatorio(Request $request){
+        $Recordatorio = new reminder();
+        $Recordatorio->medicamento_id = $request->medicamento_id;
+        $Recordatorio->fechaInicio = $request->fechaInicio;
+        $Recordatorio->fechaFinal = $request->fechaFinal;
+        $Recordatorio->expediente_id = $request->expediente_id;
+
+        $Recordatorio -> save();
+        $delay = now()->addMinutes(1);
+        $medicina = medicine::find($Recordatorio->medicamento_id);
+        $user = Auth::user();
+        $paciente = patient::firstWhere('correo', $user->email);
+        Notification::route('mail', Auth::user()->email)->notify((new RecordatorioNuevoNotification($Recordatorio, $medicina, $paciente))->delay($delay));
+        return redirect('/paciente/recordatorios');
+    }
+    
+    public function buscar_medicos(Request $request){
+        $texto=trim($request->get('texto'));
+
+
+        if($texto != null){
+        $medicos = medico::where('nombre1','LIKE', '%'.$texto.'%')
+        ->orwhere('nombre2','LIKE', '%'.$texto.'%')
+        ->orwhere('apellido1','LIKE', '%'.$texto.'%')
+        ->orwhere('apellido2','LIKE', '%'.$texto.'%')
+        ->get();
+        return view('paciente.buscar_medicos', 
+        [
+            'medicos' => $medicos,
+             'texto' => $texto
+        ]
+        );
+        }else{
+        $medicos = medico::All();
+        return view('paciente.buscar_medicos', 
+        [
+            'medicos' => $medicos,
+             'texto' => $texto
+        ]
+        );
+        }
+       
+    }
+
+    public function reservar_cita(Request $request, $codigo_medico){
+        $medico = medico::firstWhere('codigo', $codigo_medico);
+        $user = Auth::user();
+        $patient = patient::firstWhere('correo', $user->email);
+        $newAppointment = new appointment();
+        $newAppointment->cedula_paciente = $patient->cedula;
+        $newAppointment->codigo_medico = $codigo_medico;
+        $newAppointment->estado = $request->estado;
+        $newAppointment->fechaHora = $request->fechaHora;
+
+        $newAppointment->save();
+
+        return redirect('/paciente/historial');
+
+    }
     
 
 }

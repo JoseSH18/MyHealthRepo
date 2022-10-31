@@ -318,11 +318,24 @@ return [
         'url'  => 'paciente/grafica_de_Azucar',
         'icon' => 'fas fa-candy-cane',
         'can'  => 'paciente.grafica_de_Azucar',],
+
+        [ 'text' => 'Recordatorios',
+        'url'  => 'paciente/grafica_de_Azucar',
+        'icon' => 'fas fa-hospital-symbol',
+        'can'  => 'paciente.grafica_de_Azucar',],
+       
         [
             'text' => 'Mi Perfil',
             'url'  => 'paciente/perfil',
             'icon' => 'fas fa-fw fa-user',
             'can'  => 'paciente.perfil',
+
+        ],
+        [
+            'text' => 'Buscar Médicos',
+            'url'  => 'paciente/buscar_medicos',
+            'icon' => 'fas fa-medkit',
+            'can'  => 'paciente.buscar_medicos',
 
         ],
 
