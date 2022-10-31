@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medico;
+use App\Models\sugar;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -89,8 +90,27 @@ class PacientesController extends Controller
 
     public function grafica_de_Azucar(Request $request){
 
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
         
-        return view('paciente.grafica_de_Azucar');
+        
+        return view('paciente.grafica_de_Azucar',[ 'patients' => $patients,]);
     }
+
+    public function store(Request $request){
+        $user = Auth::user();
+
+        $newAzucar = new sugar();
+
+        $newAzucar->fecha = $request->fecha;
+        $newAzucar->valor = $request->valor;
+
+        $newAzucar->save();
+
+        return redirect()->back();
+
+    }
+
+    
 
 }

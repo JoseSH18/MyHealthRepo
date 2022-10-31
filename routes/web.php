@@ -41,7 +41,9 @@ Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 
 Route::get('/paciente/historial', [App\Http\Controllers\PacientesController::class, 'historial'])->middleware('can:paciente.historial')->name('paciente.historial');
 Route::get('/paciente/perfil', [App\Http\Controllers\PacientesController::class, 'perfil'])->middleware('can:paciente.perfil')->name('paciente.perfil');
 Route::post('/paciente/{cedula_paciente}/update', [App\Http\Controllers\PacientesController::class, 'update'])->middleware('can:paciente.update')->name('paciente.update');
+
 Route::get('/paciente/grafica_de_Azucar', [App\Http\Controllers\PacientesController::class, 'grafica_de_Azucar'])->name('paciente.grafica_de_Azucar');
+Route::post('/paciente/store', [App\Http\Controllers\PacientesController::class, 'store'])->middleware('can:paciente.grafica_de_Azucar')->name('paciente.store');
 
 
 Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->middleware('can:medico.index')->name('medico.index');
