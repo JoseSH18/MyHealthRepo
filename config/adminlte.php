@@ -325,6 +325,11 @@ return [
         'url'  => 'paciente/grafica_de_Azucar',
         'icon' => 'fas fa-hospital-symbol',
         'can'  => 'paciente.grafica_de_Azucar',],
+
+        [ 'text' => 'Recordatorios',
+        'url'  => 'paciente/grafica_de_Azucar',
+        'icon' => 'fas fa-hospital-symbol',
+        'can'  => 'paciente.grafica_de_Azucar',],
        
         [
             'text' => 'Mi Perfil',
