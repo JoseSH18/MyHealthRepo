@@ -26,7 +26,7 @@
                     <li>
                     <a class="card" href="{{route('home')}}" id="card1" >
                             {{ csrf_field() }}
-                        <span><h4>Inicio</h4></span>
+                        <span><h4>Home</h4></span>
                     </a>
                     </li>
                     <li>
