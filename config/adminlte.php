@@ -320,9 +320,9 @@ return [
         'can'  => 'paciente.grafica_de_Azucar',],
 
         [ 'text' => 'Recordatorios',
-        'url'  => 'paciente/grafica_de_Azucar',
-        'icon' => 'fas fa-hospital-symbol',
-        'can'  => 'paciente.grafica_de_Azucar',],
+        'url'  => 'paciente/recordatorios',
+        'icon' => 'far fa-bell',
+        'can'  => 'paciente.recordatorio',],
        
         [
             'text' => 'Mi Perfil',

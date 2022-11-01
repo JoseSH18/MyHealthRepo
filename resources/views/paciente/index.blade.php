@@ -47,7 +47,7 @@
                         <a><h4>Expediente</h4></a>
                     </li>
                     <li>
-                    <a class="card" href="{{route('paciente.vista_recordatorio')}}" id="card1" >
+                    <a class="card" href="{{route('paciente.recordatorios')}}" id="card1" >
                             {{ csrf_field() }}
                         <span><h4>Recordatorios</h4></span>
                     </a>
@@ -90,7 +90,7 @@
     <aside id="sidebar">
         <div id="nav-blog" class="sidebar-item">
             <h3>Intenta Reservar</h3>
-            <a href="#" class="btn btn-success">Reservar cita</a>
+            <a href="{{route('paciente.buscar_medicos')}}" class="btn btn-success">Reservar cita</a>
         </div>
     </aside>
     <footer id="section">

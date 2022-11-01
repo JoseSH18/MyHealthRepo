@@ -27,7 +27,7 @@
 <div class="card-container">
     <a class="card" target="_self" rel="noopener" href="{{route('medico.index')}}" id="card1">
     <img src="{{asset('images/doc.svg')}}" class="app-logo-doc" alt="Logotipo" />
-      <span>Doctor</span>
+      <span>Médico</span>
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
     </a>
     <a class="card" target="_self" rel="noopener" href="{{route('paciente.index')}}" id="card2">
