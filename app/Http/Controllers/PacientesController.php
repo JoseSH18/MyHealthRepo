@@ -8,6 +8,7 @@ use App\Models\sugar;
 use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medicine;
+use App\Models\medico;
 use App\Models\record;
 use App\Models\reminder;
 use App\Models\medicine_record;

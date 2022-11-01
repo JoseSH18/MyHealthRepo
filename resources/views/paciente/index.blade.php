@@ -90,7 +90,7 @@
     <aside id="sidebar">
         <div id="nav-blog" class="sidebar-item">
             <h3>Intenta Reservar</h3>
-            <a href="#" class="btn btn-success">Reservar cita</a>
+            <a href="{{route('paciente.buscar_medicos')}}" class="btn btn-success">Reservar cita</a>
         </div>
     </aside>
     <footer id="section">
