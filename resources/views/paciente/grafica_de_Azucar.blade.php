@@ -19,7 +19,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags ------------------------------------------------------------------------------->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -103,12 +103,12 @@ Highcharts.chart('container', {
 
 
 
-
+<!-- /formulario para agregar datos ------------------------------------------------------------------------->
 <div class="modal fade" id="modal-create-sugar-{{$patients->cedula}}">
     <div class="modal-dialog">
         <div class="modal-content bg-default">
             <div class="modal-header">
-                <h4 class="modal-title">Editar Perfil</h4>
+                <h4 class="modal-title">Agregar nuevo registro</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 </div>
@@ -141,7 +141,7 @@ Highcharts.chart('container', {
 
 
 
-
+<!-- /tabla para mostrar registros -------------------------------------------------------------------->
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -162,7 +162,7 @@ Highcharts.chart('container', {
                     
                     <tbody>
                         @foreach ($patients as $patient)
-                        <tr>
+                         <tr>
                             <td></td>
                             <td></td>
                             
@@ -170,7 +170,7 @@ Highcharts.chart('container', {
                                 <button class="btn btn-warning">Editar</button>
                                 <button class="btn btn-danger">Eliminar</button>
                             </td>
-                        </tr>
+                         </tr>
 
 
                         @endforeach
@@ -188,6 +188,44 @@ Highcharts.chart('container', {
     <!-- /.row -->
 
 </div>
+
+
+ <!-- /formulario para actualizar------------------------------------------- -->
+
+<div class="modal fade" id="modal-update-sugar-{{$patients->cedula}}">
+    <div class="modal-dialog">
+        <div class="modal-content bg-default">
+            <div class="modal-header">
+                <h4 class="modal-title">actualizar registro</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                </div>
+                <form action="{{route('paciente.store')}}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+            <div class="modal-body">
+                
+                <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input type="number" name="valor" class="form-control" id="valor">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha">fecha</label>
+                    <input type="date" name="fecha" class="form-control" id="fecha">
+                </div>
+            
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </form>
+        </div>
+    <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
 
 
   </body>

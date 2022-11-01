@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\sugar;
+use App\Models\record;
 use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medico;
@@ -98,21 +99,31 @@ class PacientesController extends Controller
         
         return view('paciente.grafica_de_Azucar',[ 'patients' => $patients,]);
     }
-
+//crear registro de azucar
     public function store(Request $request){
         $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
+        $records = record::firstWhere('cedula_paciente', $patients->cedula);
+        
 
         $newAzucar = new sugar();
 
         $newAzucar->fecha = $request->fecha;
         $newAzucar->valor = $request->valor;
+        $newAzucar->expediente_id = $records->id;
 
         $newAzucar->save();
 
         return redirect()->back();
-
     }
 
+    public function updateSugar(Request $request, $id){
+        $sugar= sugar::find($id);
+
+        $sugar->valor = $request->valor;
+        $sugar->fecha = $request->fecha;
+        $sugar->save();
+    }
 
    
 
