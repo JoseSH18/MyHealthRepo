@@ -85,14 +85,9 @@ Highcharts.chart('container', {
     
 
     series: [ {
-        name: 'Grafica',
+        name: 'Nivel',
        
-        data: [{
-            y: 1.5,
-            accessibility: {
-                description: 'Snowy symbol, this is the coldest point in the chart.'
-            }
-        }, 1.6, 3.3, 5.9, 10.5, 13.5, 14.5, 14.4, 11.5, 8.7, 4.7, 2.6]
+        data: <?= $data ?>
     }]
 
 
@@ -161,10 +156,10 @@ Highcharts.chart('container', {
                     
                     
                     <tbody>
-                        @foreach ($patients as $patient)
+                        @foreach ($sugars as $sugar)
                          <tr>
-                            <td></td>
-                            <td></td>
+                            <td>{{$sugar->fecha}}</td>
+                            <td>{{$sugar->valor}}</td>
                             
                             <td>
                                 <button class="btn btn-warning">Editar</button>

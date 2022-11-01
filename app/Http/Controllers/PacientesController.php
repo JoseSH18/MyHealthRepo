@@ -13,6 +13,7 @@ use App\Models\reminder;
 use App\Models\medicine_record;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
+use App\Models\record;
 
 use App\Notifications\RecordatorioNuevoNotification;
 
@@ -95,11 +96,27 @@ class PacientesController extends Controller
     public function grafica_de_Azucar(Request $request){
 
 
-        $user = Auth::user();
+       // $user = Auth::user();
+       $user = Auth::user();
         $patients = patient::firstWhere('correo', $user->email);
 
-        
-        return view('paciente.grafica_de_Azucar',[ 'patients' => $patients,]);
+       
+       $records = record::firstWhere('cedula_paciente', $patients->cedula);
+       
+       //$id_exp = $patients->records->id;
+
+       $sugars = sugar::all();
+       $puntos =[];
+
+       foreach ($sugars as $sugar) {
+        $puntos[] = ['name'=>$sugar['fecha'], 'y'=> floatval($sugar['valor'])];
+    }
+
+    
+    return view('paciente.grafica_de_Azucar',["data"=> json_encode($puntos),'patients' => $patients,'sugars' =>$sugars]);
+
+        //return view('paciente.perfil',   ['patients' => $patients,]);
+        //return view('paciente.grafica_de_Azucar',[ 'patients' => $patients,]);
     }
 //crear registro de azucar
     public function store(Request $request){
