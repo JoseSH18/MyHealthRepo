@@ -35,12 +35,16 @@
                         <span><h3>Citas</h3></span>
                     </a>
                     </li>
+                    <li>
+                        <a class="card" href="{{route('paciente.presion')}}" id="card1" >
+                            {{ csrf_field() }}
+                        <span><h3>Expediente</h3></span>
+                    </a>
+                    </li>
+
                    
                     <li>
                         <a><h3>Doctores</h3></a>
-                    </li>
-                    <li>
-                        <a><h3>Expediente</h3></a>
                     </li>
                     <li>
                         <li class="nav-item dropdown">

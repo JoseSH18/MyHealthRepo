@@ -37,7 +37,9 @@ Route::get('/medicoregister', function () {
 
 
 Route::get('/paciente/index', [App\Http\Controllers\PacientesController::class, 'index'])->middleware('can:paciente.index')->name('paciente.index');
-
+//ruta que a la gestion del expediente médico 
+Route::get('/paciente/presion', [App\Http\Controllers\PacientesController::class, 'presion'])->middleware('can:paciente.presion')->name('paciente.presion');
+Route::post('/paciente/agregarPresion', [App\Http\Controllers\PacientesController::class, 'agregarPresion'])->name('paciente.agregarPresion');
 Route::get('/paciente/historial', [App\Http\Controllers\PacientesController::class, 'historial'])->middleware('can:paciente.historial')->name('paciente.historial');
 Route::get('/paciente/perfil', [App\Http\Controllers\PacientesController::class, 'perfil'])->middleware('can:paciente.perfil')->name('paciente.perfil');
 Route::post('/paciente/{cedula_paciente}/update', [App\Http\Controllers\PacientesController::class, 'update'])->middleware('can:paciente.update')->name('paciente.update');

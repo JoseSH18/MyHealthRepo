@@ -325,6 +325,12 @@ return [
         'url'  => 'paciente/grafica_de_Azucar',
         'icon' => 'fas fa-hospital-symbol',
         'can'  => 'paciente.grafica_de_Azucar',],
+
+        [ 'text' => 'Gestion de expediente',
+        'url'  => 'paciente/presion',
+        'icon' => 'fas fa-heart',
+        'can'  => 'paciente.presion',],
+        
         [
             'text' => 'Mi Perfil',
             'url'  => 'paciente/perfil',

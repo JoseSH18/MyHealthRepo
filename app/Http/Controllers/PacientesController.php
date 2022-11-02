@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medico;
+use App\Models\pressure;
+use App\Models\record;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -86,6 +89,28 @@ class PacientesController extends Controller
         ]
         );
     }
+
+    public function presion(Request $request){
+       
+        return view('paciente.presion');
+        
+    }
+
+    public function agregarPresion(Request $request){
+        $user = Auth::user();
+        $patient = patient::firstWhere('correo', $user->email);
+        $patient = patient::find($patient->cedula);
+        $record = record::find(4);
+        $pressure = new Pressure();
+        $pressure->valor=$request->valor;
+        $pressure->expediente_id= $record->cedula_paciente;
+        $pressure->fecha= $request->fecha;
+   
+        $pressure-> save();
+        return redirect()->back();
+    }
+
+
 
     public function grafica_de_Azucar(Request $request){
 
