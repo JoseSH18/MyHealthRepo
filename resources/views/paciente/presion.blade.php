@@ -12,6 +12,49 @@
 @stop
 
 @section('content')
+
+<div class="card-body">
+                <table id="presiones" class="table table-bordered table-striped">
+                    
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    
+                    
+                    <tbody>
+                        @foreach ($pressures as $presiones)
+                         <tr>
+                            
+                            
+                            <td>{{$presiones->fecha}}</td>
+                            <td>{{$presiones->valor}}</td>
+                            
+                         </tr>
+
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+            </div>
+    </div>
+    <div class="modal-dialog">
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="modal fade" id="modal-update-profile">
     <div class="modal-dialog">
         <div class="modal-content bg-default">
@@ -34,7 +77,8 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="modal-dialog">
+
+
+         
 
         @stop
