@@ -319,7 +319,7 @@ return [
         'icon' => 'fas fa-candy-cane',
         'can'  => 'paciente.grafica_de_Azucar',],
 
-        [ 'text' => 'Gestion de expediente',
+        [ 'text' => 'Gestion de Presión',
         'url'  => 'paciente/presion',
         'icon' => 'fas fa-heart',
         'can'  => 'paciente.presion',],
