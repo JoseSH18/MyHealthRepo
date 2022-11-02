@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('valor', 30);
             $table->foreignId('expediente_id')->constrained('records')->onUpdate('cascade')->onDelete('cascade');
-            $table->datetime('fecha');
+            $table->date('fecha');
             $table->timestamps();
         });
     }
