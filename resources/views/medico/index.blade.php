@@ -7,7 +7,7 @@
     <title>MyHealth - Homepage </title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/build/assets/pacientestyle.7a9ae779.css">
+    <link rel="stylesheet" href="/build/assets/pacientestyle.976050f8.css">
 </head>
 <body>
     <header id="header">
@@ -62,7 +62,7 @@
     </header>
     <div id="slider" class="slider-big">
         <h1  style="color:#f3be5d">"No hay trucos, atajos, pastillas mágicas, pociones especiales o equipo especial. Lo único que necesitas es deseo y voluntad"</h1>
-        <a href="#" class="btn-white">Perfil</a>
+        <a href="{{ route('medico.perfil') }}" class="btn-white">Perfil</a>
     </div>
     <aside id="sidebar">
         <div id="nav-blog" class="sidebar-item">
