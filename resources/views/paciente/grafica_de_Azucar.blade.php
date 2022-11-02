@@ -161,7 +161,7 @@ Highcharts.chart('container', {
                             
                             <td>
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-sugar-{{$sugar->id}}">
-                                editar
+                                Modificar
                                  </button>
                                 
                                 
