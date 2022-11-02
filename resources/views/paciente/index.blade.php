@@ -14,10 +14,13 @@
         <div class="center">
             <!-- LOGO -->
             <div id="logo">
+                <a href="{{route('home')}}">
                 <img src="{{asset('images/corazon.svg')}}" class="app-logo" alt="Logotipo"/>
+                </a>
                 <span id="brand">
                     <strong>My</strong>Health
                 </span>
+                
             </div>
             
             <!-- MENU -->
