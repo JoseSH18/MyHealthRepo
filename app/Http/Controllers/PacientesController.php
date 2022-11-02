@@ -164,11 +164,21 @@ class PacientesController extends Controller
     }
 
     public function updateSugar(Request $request, $id){
+        $user = Auth::user();
         $sugar= sugar::find($id);
 
         $sugar->valor = $request->valor;
         $sugar->fecha = $request->fecha;
         $sugar->save();
+        return redirect()->back();
+    }
+
+    public function deleteSugar(Request $request, $id){
+        $user = Auth::user();
+
+        $sugar = sugar::find($id);
+        $sugar->delete();
+        return redirect()->back();
     }
 
    

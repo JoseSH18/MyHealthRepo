@@ -128,9 +128,7 @@ Highcharts.chart('container', {
             </div>
         </form>
         </div>
-    <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
 
 
@@ -162,10 +160,52 @@ Highcharts.chart('container', {
                             <td>{{$sugar->valor}}</td>
                             
                             <td>
-                                <button class="btn btn-warning">Editar</button>
-                                <button class="btn btn-danger">Eliminar</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-sugar-{{$sugar->id}}">
+                                editar
+                                 </button>
+                                
+                                
+                                    <form action="{{route('paciente.deleteSugar', $sugar->id)}}" method="POST">
+                                    {{csrf_field()}}
+                                    @method('DELETE')
+                                    <button class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                
                             </td>
                          </tr>
+                         <!-- /formulario para actualizar------------------------------------------- -->
+
+<div class="modal fade" id="modal-update-sugar-{{$sugar->id}}">
+    <div class="modal-dialog">
+        <div class="modal-content bg-default">
+            <div class="modal-header">
+                <h4 class="modal-title">actualizar registro</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                </div>
+                <form action="{{route('paciente.updateSugar', $sugar->id)}}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+            <div class="modal-body">
+                
+                <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input type="number" name="valor" class="form-control" id="valor" value="{{$sugar->valor}}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha">fecha</label>
+                    <input type="date" name="fecha" class="form-control" id="fecha" value="{{$sugar->fecha}}">
+                </div>
+            
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </form>
+        </div>
+    </div> 
+</div>
 
 
                         @endforeach
@@ -183,44 +223,6 @@ Highcharts.chart('container', {
     <!-- /.row -->
 
 </div>
-
-
- <!-- /formulario para actualizar------------------------------------------- -->
-
-<div class="modal fade" id="modal-update-sugar-{{$patients->cedula}}">
-    <div class="modal-dialog">
-        <div class="modal-content bg-default">
-            <div class="modal-header">
-                <h4 class="modal-title">actualizar registro</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                </div>
-                <form action="{{route('paciente.store')}}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-            <div class="modal-body">
-                
-                <div class="form-group">
-                    <label for="valor">Valor</label>
-                    <input type="number" name="valor" class="form-control" id="valor">
-                </div>
-                
-                <div class="form-group">
-                    <label for="fecha">fecha</label>
-                    <input type="date" name="fecha" class="form-control" id="fecha">
-                </div>
-            
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-outline-primary">Guardar</button>
-            </div>
-        </form>
-        </div>
-    <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-
 
 
   </body>

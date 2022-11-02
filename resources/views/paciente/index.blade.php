@@ -7,7 +7,7 @@
     <title>MyHealth - Homepage </title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/build/assets/pacientestyle.7a9ae779.css">
+    <link rel="stylesheet" href="/build/assets/pacientestyle.976050f8.css">
 </head>
 <body>
     <header id="header">
@@ -51,13 +51,25 @@
                         </a>
                     </li>
                     <li>
-                        <a><h4>Expediente</h4></a>
-                    </li>
+                        <a class="card" href="{{route('paciente.recordatorios')}}" id="card1" >
+                                {{ csrf_field() }}
+                            <span><h4>Recordatorios</h4></span>
+                        </a>
+                        </li>
                     <li>
-                    <a class="card" href="{{route('paciente.recordatorios')}}" id="card1" >
-                            {{ csrf_field() }}
-                        <span><h4>Recordatorios</h4></span>
-                    </a>
+                        <li class="nav-item dropdown">
+                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <span>Expediente</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" id="dropdownmenu" href="{{ route('paciente.grafica_de_Azucar') }}">
+                                Azúcar
+                            </a>
+                            <a class="dropdown-item" href="" id="dropdownmenu2">
+                                Presión
+                            </a>
+                        </div>
+                        </li> 
                     </li>
                     <li>
                         <li class="nav-item dropdown">
@@ -92,7 +104,7 @@
     </header>
     <div id="slider" class="slider-big">
         <h1  style="color:#f3be5d">"No hay trucos, atajos, pastillas mágicas, pociones especiales o equipo especial. Lo único que necesitas es deseo y voluntad"</h1>
-        <a href="#" class="btn-white">Expediente</a>
+        <a href="{{route('paciente.historial')}}" class="btn-white">Historial</a>
     </div>
     <aside id="sidebar">
         <div id="nav-blog" class="sidebar-item">
