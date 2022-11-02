@@ -38,13 +38,6 @@
                         <span><h4>Citas</h4></span>
                     </a>
                     </li>
-                    <li>
-                        <a class="card" href="{{route('paciente.presion')}}" id="card1" >
-                            {{ csrf_field() }}
-                        <span><h3>Expediente</h3></span>
-                    </a>
-                    </li>
-
                    
                     <li>
                         <a class="card" href="{{route('paciente.buscar_medicos')}}" id="card1" >
@@ -68,7 +61,7 @@
                             <a class="dropdown-item" id="dropdownmenu" href="{{ route('paciente.grafica_de_Azucar') }}">
                                 Azúcar
                             </a>
-                            <a class="dropdown-item" href="" id="dropdownmenu2">
+                            <a class="dropdown-item" href="{{route('paciente.presion')}}" id="dropdownmenu2">
                                 Presión
                             </a>
                         </div>
