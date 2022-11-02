@@ -1,10 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Paciente - Historial de Citas')
+@section('title', 'Paciente - Azucar')
 
 @section('content_header')
 <h1>
     Grafica de Azucar
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-sugar-{{$patients->cedula}}">
+        Agregar datos
+    </button>
 
     <div class="card-header">
     
@@ -16,7 +19,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags ------------------------------------------------------------------------------->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,59 +52,176 @@
 
     <script>
 
-        // Data retrieved https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature
+    
+      // Data retrieved https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature
 Highcharts.chart('container', {
     chart: {
-        type: 'spline'
+        type: 'line'
     },
     title: {
-        text: 'Niveles de Azucar'
+        text: 'Azúcar'
     },
-   
+    subtitle: {
+        text: ''
+    },
     xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        accessibility: {
-            description: 'Months of the year'
-        }
+        categories: []
     },
     yAxis: {
         title: {
-            text: 'Azucar'
-        },
-        labels: {
-            formatter: function () {
-                return this.value + '°';
-            }
+            text: 'Niveles de azucar'
         }
-    },
-    tooltip: {
-        crosshairs: true,
-        shared: true
     },
     plotOptions: {
-        spline: {
-            marker: {
-                radius: 4,
-                lineColor: '#666666',
-                lineWidth: 1
-            }
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: true
         }
+        
+
     },
+    
+
     series: [ {
-        name: 'Grafica',
+        name: 'Nivel',
        
-        data: [{
-            y: 1.5,
-            accessibility: {
-                description: 'Snowy symbol, this is the coldest point in the chart.'
-            }
-        }, 1.6, 3.3, 5.9, 10.5, 13.5, 14.5, 14.4, 11.5, 8.7, 4.7, 2.6]
+        data: <?= $data ?>
     }]
+
+
+
 });
-              
 
     </script>
+
+
+
+<!-- /formulario para agregar datos ------------------------------------------------------------------------->
+<div class="modal fade" id="modal-create-sugar-{{$patients->cedula}}">
+    <div class="modal-dialog">
+        <div class="modal-content bg-default">
+            <div class="modal-header">
+                <h4 class="modal-title">Agregar nuevo registro</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                </div>
+                <form action="{{route('paciente.store')}}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+            <div class="modal-body">
+                
+                <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input type="number" name="valor" class="form-control" id="valor">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha">fecha</label>
+                    <input type="date" name="fecha" class="form-control" id="fecha">
+                </div>
+            
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </form>
+        </div>
+    <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+
+<!-- /tabla para mostrar registros -------------------------------------------------------------------->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Datos </h3>
+                </div>
+            <div class="card-body">
+                <table id="categories" class="table table-bordered table-striped">
+                    
+                    <thead>
+                        <tr>
+                            <th>fecha</th>
+                            <th>valor</th>
+                        </tr>
+                    </thead>
+                    
+                    
+                    <tbody>
+                        @foreach ($sugars as $sugar)
+                         <tr>
+                            <td>{{$sugar->fecha}}</td>
+                            <td>{{$sugar->valor}}</td>
+                            
+                            <td>
+                                <button class="btn btn-warning">Editar</button>
+                                <button class="btn btn-danger">Eliminar</button>
+                            </td>
+                         </tr>
+
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+</div>
+
+
+ <!-- /formulario para actualizar------------------------------------------- -->
+
+<div class="modal fade" id="modal-update-sugar-{{$patients->cedula}}">
+    <div class="modal-dialog">
+        <div class="modal-content bg-default">
+            <div class="modal-header">
+                <h4 class="modal-title">actualizar registro</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                </div>
+                <form action="{{route('paciente.store')}}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+            <div class="modal-body">
+                
+                <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input type="number" name="valor" class="form-control" id="valor">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha">fecha</label>
+                    <input type="date" name="fecha" class="form-control" id="fecha">
+                </div>
+            
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </form>
+        </div>
+    <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
 
   </body>
 </html>

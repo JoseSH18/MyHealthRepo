@@ -7,7 +7,7 @@
     <title>MyHealth - Homepage </title>
     <link rel="shortcut icon" href="{{asset('images/corazon.svg')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/build/assets/pacientestyle.0730def8.css">
+    <link rel="stylesheet" href="/build/assets/pacientestyle.7a9ae779.css">
 </head>
 <body>
     <header id="header">
@@ -26,13 +26,13 @@
                     <li>
                     <a class="card" href="{{route('home')}}" id="card1" >
                             {{ csrf_field() }}
-                        <span><h3>Inicio</h3></span>
+                        <span><h4>Home</h4></span>
                     </a>
                     </li>
                     <li>
                         <a class="card" href="{{route('paciente.historial')}}" id="card1" >
                             {{ csrf_field() }}
-                        <span><h3>Citas</h3></span>
+                        <span><h4>Citas</h4></span>
                     </a>
                     </li>
                     <li>
@@ -44,7 +44,20 @@
 
                    
                     <li>
-                        <a><h3>Doctores</h3></a>
+                        <a class="card" href="{{route('paciente.buscar_medicos')}}" id="card1" >
+                            {{ csrf_field() }}
+                   
+                        <span><h4>Médicos</h4></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a><h4>Expediente</h4></a>
+                    </li>
+                    <li>
+                    <a class="card" href="{{route('paciente.recordatorios')}}" id="card1" >
+                            {{ csrf_field() }}
+                        <span><h4>Recordatorios</h4></span>
+                    </a>
                     </li>
                     <li>
                         <li class="nav-item dropdown">
@@ -84,7 +97,7 @@
     <aside id="sidebar">
         <div id="nav-blog" class="sidebar-item">
             <h3>Intenta Reservar</h3>
-            <a href="#" class="btn btn-success">Reservar cita</a>
+            <a href="{{route('paciente.buscar_medicos')}}" class="btn btn-success">Reservar cita</a>
         </div>
     </aside>
     <footer id="section">

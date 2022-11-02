@@ -291,23 +291,16 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
+
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        ['header' => 'Paciente'],
+
+        ['header' => 'Paciente',
+        'can'  => 'paciente.index'],
         [
             'text' => 'Inicio',
             'url'  => 'paciente/index',
@@ -323,7 +316,7 @@ return [
 
         [ 'text' => 'Grafica de Azucar',
         'url'  => 'paciente/grafica_de_Azucar',
-        'icon' => 'fas fa-hospital-symbol',
+        'icon' => 'fas fa-candy-cane',
         'can'  => 'paciente.grafica_de_Azucar',],
 
         [ 'text' => 'Gestion de expediente',
@@ -331,6 +324,11 @@ return [
         'icon' => 'fas fa-heart',
         'can'  => 'paciente.presion',],
         
+        [ 'text' => 'Recordatorios',
+        'url'  => 'paciente/recordatorios',
+        'icon' => 'far fa-bell',
+        'can'  => 'paciente.recordatorio',],
+       
         [
             'text' => 'Mi Perfil',
             'url'  => 'paciente/perfil',
@@ -338,8 +336,16 @@ return [
             'can'  => 'paciente.perfil',
 
         ],
+        [
+            'text' => 'Buscar Médicos',
+            'url'  => 'paciente/buscar_medicos',
+            'icon' => 'fas fa-medkit',
+            'can'  => 'paciente.buscar_medicos',
 
-        ['header' => 'Médico'],
+        ],
+
+        ['header' => 'Médico',
+        'can'  => 'medico.index'],
         [
             'text' => 'Inicio',
             'url'  => 'medico/index',

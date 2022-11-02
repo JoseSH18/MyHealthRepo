@@ -10,7 +10,7 @@ class medicine extends Model
     use HasFactory;
     public function records()
     {
-        return $this->belongsToMany(record::class, 'medicine_record', 'record_id', 'medicine_id');
+        return $this->belongsToMany(record::class, 'medicine_records', 'record_id', 'medicine_id');
     }
     public function reminders()
     {
