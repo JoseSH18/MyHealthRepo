@@ -137,11 +137,21 @@ class PacientesController extends Controller
     }
 
     public function updateSugar(Request $request, $id){
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
         $sugar= sugar::find($id);
 
         $sugar->valor = $request->valor;
         $sugar->fecha = $request->fecha;
         $sugar->save();
+    }
+
+    public function deleteSugar(Request $request, $id){
+        $user = Auth::user();
+
+        $sugar = sugar::find($id);
+        $sugar->delete();
+        return redirect()->back();
     }
 
    

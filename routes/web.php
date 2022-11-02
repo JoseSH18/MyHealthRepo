@@ -47,7 +47,7 @@ Route::post('/paciente/{cedula_paciente}/update', [App\Http\Controllers\Paciente
 Route::get('/paciente/grafica_de_Azucar', [App\Http\Controllers\PacientesController::class, 'grafica_de_Azucar'])->name('paciente.grafica_de_Azucar');
 Route::post('/paciente/store', [App\Http\Controllers\PacientesController::class, 'store'])->middleware('can:paciente.grafica_de_Azucar')->name('paciente.store');
 Route::post('/paciente/{cedula_paciente}/update', [App\Http\Controllers\PacientesController::class, 'updateSugar'])->middleware('can:paciente.grafica_de_Azucar')->name('paciente.updateSugar');
-
+Route::delete('/paciente/{cedula_paciente}/deleteSugar', [App\Http\Controllers\PacientesController::class, 'deleteSugar'])->middleware('can:paciente.grafica_de_Azucar')->name('paciente.deleteSugar');
 
 Route::get('/paciente/vista_recordatorio', [App\Http\Controllers\PacientesController::class, 'vista_recordatorio'])->name('paciente.vista_recordatorio');
 Route::post('/paciente/agregar_recordatorio', [App\Http\Controllers\PacientesController::class, 'agregar_recordatorio'])->name('paciente.agregar_recordatorio');

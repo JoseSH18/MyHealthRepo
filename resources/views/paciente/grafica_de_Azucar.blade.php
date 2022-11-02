@@ -163,7 +163,12 @@ Highcharts.chart('container', {
                             
                             <td>
                                 <button class="btn btn-warning">Editar</button>
-                                <button class="btn btn-danger">Eliminar</button>
+                                <form action="{{route('paciente.deleteSugar', $sugar->id)}}" method="POST">
+                                    {{csrf_field()}}
+                                    @method('DELETE')
+                                    <button class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                
                             </td>
                          </tr>
 
