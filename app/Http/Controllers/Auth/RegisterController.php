@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\medico;
 use App\Models\patient;
+use App\Models\record;
 
 class RegisterController extends Controller
 {
@@ -101,17 +102,19 @@ class RegisterController extends Controller
         ]);
         $user->assignRole($data['role']);
         if($data['role'] == "Paciente"){
-            
+            $newExpediente = new record();
             $newPaciente = new patient();
             $newPaciente->nombre1 = $data['name'];
             $newPaciente->nombre2 = $data['nombre2'];
             $newPaciente->apellido1 = $data['apellido1'];
             $newPaciente->apellido2 = $data['apellido2'];
             $newPaciente->cedula = $data['cedula'];
+            $newExpediente->cedula_paciente = $data['cedula'];
             $newPaciente->correo = $data['email'];
             $newPaciente->estadocivil = $data['estadocivil'];
             $newPaciente->telefono = $data['telefono'];
             $newPaciente->save();
+            $newExpediente->save();
         }else if($data['role'] == "Medico"){
             $newMedico = new medico();
             $newMedico->nombre1 = $data['name'];
