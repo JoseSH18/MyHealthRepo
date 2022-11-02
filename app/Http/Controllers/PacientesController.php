@@ -9,11 +9,14 @@ use App\Models\patient;
 use App\Models\appointment;
 use App\Models\medicine;
 use App\Models\medico;
+use App\Models\pressure;
+use App\Models\record;
+
 use App\Models\reminder;
 use App\Models\medicine_record;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
-use App\Models\record;
+
 
 use App\Notifications\RecordatorioNuevoNotification;
 
@@ -92,6 +95,30 @@ class PacientesController extends Controller
         ]
         );
     }
+
+    public function presion(Request $request){
+       $pressures = Pressure::all();
+        return view('paciente.presion', compact('pressures')) ;
+    }
+
+    public function agregarPresion(Request $request){
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
+        $records = record::firstWhere('cedula_paciente', $patients->cedula);
+        
+
+        $pressure = new pressure();
+
+        $pressure->fecha = $request->fecha;
+        $pressure->valor = $request->valor;
+        $pressure->expediente_id = $records->id;
+
+        $pressure->save();
+        return redirect()->back();
+       
+    }
+
+
 
     public function grafica_de_Azucar(Request $request){
 

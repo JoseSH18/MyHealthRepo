@@ -38,6 +38,13 @@
                         <span><h4>Citas</h4></span>
                     </a>
                     </li>
+                    <li>
+                        <a class="card" href="{{route('paciente.presion')}}" id="card1" >
+                            {{ csrf_field() }}
+                        <span><h3>Expediente</h3></span>
+                    </a>
+                    </li>
+
                    
                     <li>
                         <a class="card" href="{{route('paciente.buscar_medicos')}}" id="card1" >
