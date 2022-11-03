@@ -63,6 +63,14 @@ Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'ind
 Route::get('/medico/perfil', [App\Http\Controllers\MedicosController::class, 'perfil'])->middleware('can:medico.perfil')->name('medico.perfil');
 Route::post('/medico/{codigo_medico}/update', [App\Http\Controllers\MedicosController::class, 'update'])->middleware('can:medico.update')->name('medico.update');
 
+
+
+Route::get('/paciente/presion', [App\Http\Controllers\PacientesController::class, 'presion'])->middleware('can:paciente.presion')->name('paciente.presion');
+Route::post('/paciente/agregarPresion', [App\Http\Controllers\PacientesController::class, 'agregarPresion'])->name('paciente.agregarPresion');
+Route::post('/paciente/{cedula_paciente}/actualizar_presion', [App\Http\Controllers\PacientesController::class, 'actualizar_presion'])->middleware('can:paciente.actualizar_presion')->name('paciente.actualizar_presion');
+Route::delete('/paciente/{cedula_paciente}/eliminarPresion', [App\Http\Controllers\PacientesController::class, 'eliminarPresion'])->middleware('can:paciente.eliminarPresion')->name('paciente.eliminarPresion');
+
+
 Auth::routes();
 
 

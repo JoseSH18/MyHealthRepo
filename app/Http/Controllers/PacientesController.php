@@ -97,9 +97,27 @@ class PacientesController extends Controller
     }
 
     public function presion(Request $request){
-       $pressures = Pressure::all();
-        return view('paciente.presion', compact('pressures')) ;
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
+
+       
+       $records = record::firstWhere('cedula_paciente', $patients->cedula);
+       
+      
+
+       $pressures = pressure::all();
+       $arregloDeNiveles =[];
+
+       foreach ($pressures as $pressure) {
+        $arregloDeNiveles[] = ['name'=>$pressure['fecha'], 'y'=> floatval($pressure['valor'])];
     }
+
+       return view('paciente.presion',["data"=> json_encode($arregloDeNiveles),'patients' => $patients,'pressures' =>$pressures]);
+
+       
+   }
+       
+    
 
     public function agregarPresion(Request $request){
         $user = Auth::user();
@@ -118,6 +136,24 @@ class PacientesController extends Controller
        
     }
 
+    public function actualizar_presion(Request $request, $id){
+        $user = Auth::user();
+        $pressure= pressure::find($id);
+
+        $pressure->valor = $request->valor;
+        $pressure->fecha = $request->fecha;
+        $pressure->save();
+        return redirect()->back();
+    }
+
+    public function eliminarPresion(Request $request, $id){
+        $user = Auth::user();
+        $pressure = pressure::find($id);
+        $pressure->delete();
+        return redirect()->back();
+    }
+
+    
 
 
     public function grafica_de_Azucar(Request $request){
@@ -137,7 +173,9 @@ class PacientesController extends Controller
 
        foreach ($sugars as $sugar) {
         $puntos[] = ['name'=>$sugar['fecha'], 'y'=> floatval($sugar['valor'])];
+   
     }
+    
 
     
     return view('paciente.grafica_de_Azucar',["data"=> json_encode($puntos),'patients' => $patients,'sugars' =>$sugars]);
