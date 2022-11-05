@@ -292,12 +292,22 @@ class PacientesController extends Controller
         $newAppointment = new appointment();
         $newAppointment->cedula_paciente = $patient->cedula;
         $newAppointment->codigo_medico = $codigo_medico;
-        $newAppointment->estado = $request->estado;
+        $newAppointment->estado = "Pendiente";
         $newAppointment->fechaHora = $request->fechaHora;
 
         $newAppointment->save();
 
         return redirect('/paciente/historial');
+
+    }
+
+    public function cancelar_cita(Request $request, $id_cita){
+        $cita = appointment::find($id_cita);
+
+        $cita->estado = "Cancelada";
+        $cita->save();
+
+        return redirect()->back();
 
     }
     

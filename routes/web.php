@@ -56,6 +56,7 @@ Route::post('/paciente/agregar_recordatorio', [App\Http\Controllers\PacientesCon
 Route::get('/paciente/recordatorios', [App\Http\Controllers\PacientesController::class, 'recordatorios'])->middleware('can:paciente.recordatorio')->name('paciente.recordatorios');
 Route::post('/paciente/{cedula_paciente}/update', [App\Http\Controllers\PacientesController::class, 'update'])->middleware('can:paciente.update')->name('paciente.update');
 Route::post('/paciente/{codigo_medico}/reservar_cita', [App\Http\Controllers\PacientesController::class, 'reservar_cita'])->middleware('can:paciente.reservar_cita')->name('paciente.reservar_cita');
+Route::post('/paciente/{id_cita}/cancelar_cita', [App\Http\Controllers\PacientesController::class, 'cancelar_cita'])->middleware('can:paciente.cancelar_cita')->name('paciente.cancelar_cita');
 Route::get('/paciente/buscar_medicos', [App\Http\Controllers\PacientesController::class, 'buscar_medicos'])->middleware('can:paciente.buscar_medicos')->name('paciente.buscar_medicos');
 
 

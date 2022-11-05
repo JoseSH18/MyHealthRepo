@@ -36,6 +36,7 @@
                             <th>Nombre de médico</th>
                             <th>Consultorio</th>
                             <th>Estado</th>
+                            <th>Cancelar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,7 +50,15 @@
                             <td>{{$appointment->medico->getNombreCompletoAttribute()}}</td>
                             <td>{{$appointment->medico->consultorio}}</td>
                             <td>{{$appointment->estado}}</td>
+                            <td>
+                                @if($appointment->estado != "Cancelada")
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-cancelar-cita-{{$appointment->id}}">
+                                        Cancelar
+                                    </button>
+                                @endif
+                            </td>
                         </tr>
+                        @include('paciente.modal-cancelar-cita')
                         @endforeach
                     </tbody>
                     <tfoot>
@@ -62,6 +71,7 @@
                             <th>Nombre de médico</th>
                             <th>Consultorio</th>
                             <th>Estado</th>
+                            <th>Cancelar</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -88,7 +98,7 @@
                 <p>Proximamente, Formulario....</p>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-outline-light">Save changes</button>
             </div>
         </div>
