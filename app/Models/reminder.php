@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class reminder extends Model
 {
-        public function patient()
+    public function medicine()
     {
-        return $this->belongsTo(patient::class, 'cedula_paciente');
+        return $this->belongsTo(medicine::class, 'medicamento_id');
     }
     public function record()
     {
-        return $this->belongsTo(record::class, 'record_id');
+        return $this->belongsTo(record::class, 'expediente_id');
     }
 
     public function hours()

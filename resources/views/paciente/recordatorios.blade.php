@@ -38,12 +38,12 @@
                             <tr>
                                 <td>{{$reminder->id}}</td>
                                 <td>{{$reminder->medicamento_id}}</td>
-                                <td>{{$Medicines->nombre}}</td>
-                                <td>{{$reminder->expediente_id}}</td>
+                                <td>{{$reminder->medicine->nombre}}</td>
+                                <td>{{$reminder->record->id}}</td>
                                     <td>{{$patients->nombre1}} {{$patients->nombre2}} {{$patients->apellido1}}
                                         {{$patients->apellido2}}</td>
                                     <td>{{$reminder->fechaInicio}}</td>
-                                    <<td>{{$reminder->fechaFinal}}</td>
+                                    <td>{{$reminder->fechaFinal}}</td>
                             </tr>
                             @endforeach
                         </tbody>

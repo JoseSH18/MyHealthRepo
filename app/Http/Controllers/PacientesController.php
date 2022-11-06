@@ -227,8 +227,19 @@ class PacientesController extends Controller
     $records = record::firstWhere('cedula_paciente', $patients->cedula);
     $Medicinas = medicine::all();
     $Reminders = reminder::where('expediente_id', $records->id)->get();    
-    $medicine_records = medicine_record::find($records->id);
-    $Medicines = medicine::find($medicine_records->medicamento_id); 
+
+
+    $Medicines = medicine_record::join('medicines', function($join) use($records)
+    {
+        $join->on('medicamento_id', '=', 'medicines.id')
+        ->where('medicine_records.expediente_id', '=', $records->id);
+        
+           
+    })->join('records', function($query) use($records){
+        $query->on('medicine_records.expediente_id', '=', 'records.id')
+        ->where('medicine_records.expediente_id', '=', $records->id);
+    })->get();
+
     
         return view('paciente.recordatorios' , [    
             'patients' => $patients, 'records' => $records , "Medicines" => $Medicines, "Reminders" =>$Reminders, 'Medicinas'=>$Medicinas
