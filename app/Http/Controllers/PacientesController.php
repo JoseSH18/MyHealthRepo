@@ -104,8 +104,7 @@ class PacientesController extends Controller
        $records = record::firstWhere('cedula_paciente', $patients->cedula);
        
       
-
-       $pressures = pressure::all();
+       $pressures = pressure::where('expediente_id', $records->id)->get();
        $arregloDeNiveles =[];
 
        foreach ($pressures as $pressure) {
@@ -168,7 +167,7 @@ class PacientesController extends Controller
        
        //$id_exp = $patients->records->id;
 
-       $sugars = sugar::all();
+       $sugars = sugar::where('expediente_id', $records->id)->get();
        $puntos =[];
 
        foreach ($sugars as $sugar) {
