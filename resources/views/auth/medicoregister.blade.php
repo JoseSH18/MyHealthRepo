@@ -107,7 +107,7 @@
 
                             <div class="col-md-6">
                                 
-                                <textarea id="detalleMedico" class="form-control" name="detalleMedico" required autocomplete="new-detalleMedico"></textarea>
+                                <textarea id="detalleMedico" class="form-control" name="detalleMedico" ></textarea>
                             </div>
                         </div>
 

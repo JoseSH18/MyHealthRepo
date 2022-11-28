@@ -56,9 +56,9 @@ class RegisterController extends Controller
         if(array_key_exists('cedula', $data)){
             return Validator::make($data, [
                 'name' => ['required', 'string', 'max:25'],
-                'nombre2' => ['string', 'max:25'],
+                'nombre2' => ['nullable','string', 'max:25'],
                 'apellido1' => ['required', 'string', 'max:25'],
-                'apellido2' => ['string', 'max:25'],
+                'apellido2' => ['nullable','string', 'max:25'],
                 'telefono' => ['required', 'integer'],
                 'estadocivil' => ['required','string', 'max:15'],
                 'email' => ['required', 'string', 'email', 'max:40', 'unique:users'],
@@ -69,11 +69,11 @@ class RegisterController extends Controller
  
             return Validator::make($data, [
                 'name' => ['required', 'string', 'max:25'],
-                'nombre2' => ['string', 'max:25'],
+                'nombre2' => ['nullable','string', 'max:25'],
                 'apellido1' => ['required', 'string', 'max:25'],
-                'apellido2' => ['string', 'max:25'],
+                'apellido2' => ['nullable','string', 'max:25'],
                 'consultorio' => ['required', 'string', 'max:25'],
-                'detalleMedico' => ['required', 'string', 'max:25'],
+                'detalleMedico' => ['nullable', 'string', 'max:25'],
                 'especialidad' => ['required', 'string', 'max:20'],
                 'servicio' => ['required', 'string', 'max:20'],
                 'telefono' => ['required', 'integer'],
