@@ -42,6 +42,7 @@ class RolSeeder extends Seeder
         Permission::create(['name'=>'paciente.cancelar_cita'])->assignRole($role2);
         Permission::create(['name'=>'paciente.agregarAlergia'])->assignRole($role2);
         Permission::create(['name'=>'paciente.alergias'])->assignRole($role2);
+        Permission::create(['name'=>'paciente.registrarAlergia'])->assignRole($role2);
 
     }
 }

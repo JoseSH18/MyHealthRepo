@@ -155,26 +155,28 @@ class PacientesController extends Controller
 
 
     public function alergias(Request $request){
+
         $user = Auth::user();
         $patients = patient::firstWhere('correo', $user->email);
+        $records = record::firstWhere('cedula_paciente', $patients->cedula);
+        $todas_alergias = allergy::all();
+    
+        $allergies = allergy_record::join('allergies', function($join) use($records)
+        {
+            $join->on('alergia_id', '=', 'allergies.id')
+            ->where('allergy_records.expediente_id', '=', $records->id);
+            
+               
+        })->join('records', function($query) use($records){
+            $query->on('allergy_records.expediente_id', '=', 'records.id')
+            ->where('allergy_records.expediente_id', '=', $records->id);
+        })->get();
 
-       
-       $records = record::firstWhere('cedula_paciente', $patients->cedula);
-       $alergias_paciente;
-       foreach ($records as $record) {
-        $alergias_actual = allergy::firstWhere('id', $record->alergia_id);
-        $alergias_paciente []= $alergias_actual->nombre;
+                return view('paciente.alergias' , ['records' => $records ,'todas_alergias' => $todas_alergias ,'allergies' =>$allergies]);
        }
 
-    $alergias = collect($alergias_paciente);
-      
-       return view('paciente.alergias',['allergias' =>$alergias]);
-    
-    
-       }
 
-
-    public function agregarAlergia(Request $request){
+    public function registrarAlergia(Request $request){
         $user = Auth::user();
         $patients = patient::firstWhere('correo', $user->email);
         $records = record::firstWhere('cedula_paciente', $patients->cedula);
@@ -182,13 +184,25 @@ class PacientesController extends Controller
         $allergy = allergy::firstOrCreate(
             ['nombre' =>  $request->nombre],
         );
-
-        $allergy_record = allergy_record::firstOrCreate(
-            ['alergia_id' =>  $allergy->id], ['expediente_id' =>  $records->id]
-        );
-
          return redirect()->back();
     }
+
+    public function agregarAlergia(Request $request){
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
+        $records = record::firstWhere('cedula_paciente', $patients->cedula);
+
+    
+        $allergy_records = new allergy_record();
+        
+        $allergy_records->alergia_id =$request->alergia_id;
+        $allergy_records->expediente_id = $records->id;
+       
+        $allergy_records->save();
+        
+       return redirect('/paciente/alergias');
+    
+        }
 
 
     public function grafica_de_Azucar(Request $request){
