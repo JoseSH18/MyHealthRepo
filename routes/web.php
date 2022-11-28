@@ -71,6 +71,9 @@ Route::post('/paciente/agregarPresion', [App\Http\Controllers\PacientesControlle
 Route::post('/paciente/{cedula_paciente}/actualizar_presion', [App\Http\Controllers\PacientesController::class, 'actualizar_presion'])->middleware('can:paciente.actualizar_presion')->name('paciente.actualizar_presion');
 Route::delete('/paciente/{cedula_paciente}/eliminarPresion', [App\Http\Controllers\PacientesController::class, 'eliminarPresion'])->middleware('can:paciente.eliminarPresion')->name('paciente.eliminarPresion');
 
+Route::post('/paciente/agregarAlergia', [App\Http\Controllers\PacientesController::class, 'agregarAlergia'])->name('paciente.agregarAlergia');
+Route::get('/paciente/alergias', [App\Http\Controllers\PacientesController::class, 'alergias'])->name('paciente.alergias');
+
 
 Auth::routes();
 
