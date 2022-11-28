@@ -64,6 +64,9 @@
                             <a class="dropdown-item" href="{{route('paciente.presion')}}" id="dropdownmenu2">
                                 Presión
                             </a>
+                             <a class="dropdown-item" href="{{route('paciente.alergias')}}" id="dropdownmenu2">
+                                Alergias
+                            </a>
                         </div>
                         </li> 
                     </li>

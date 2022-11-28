@@ -16,7 +16,8 @@ use App\Models\reminder;
 use App\Models\medicine_record;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
-
+use App\Models\allergy;
+use App\Models\allergy_record;
 
 use App\Notifications\RecordatorioNuevoNotification;
 
@@ -111,7 +112,7 @@ class PacientesController extends Controller
         $arregloDeNiveles[] = ['name'=>$pressure['fecha'], 'y'=> floatval($pressure['valor'])];
     }
 
-       return view('paciente.presion',["data"=> json_encode($arregloDeNiveles),'patients' => $patients,'pressures' =>$pressures]);
+       return view('paciente.presion',["data"=> json_encode($arregloDeNiveles),'pressures' =>$pressures]);
 
        
    }
@@ -152,7 +153,42 @@ class PacientesController extends Controller
         return redirect()->back();
     }
 
+
+    public function alergias(Request $request){
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
+
+       
+       $records = record::firstWhere('cedula_paciente', $patients->cedula);
+       $alergias_paciente;
+       foreach ($records as $record) {
+        $alergias_actual = allergy::firstWhere('id', $record->alergia_id);
+        $alergias_paciente []= $alergias_actual->nombre;
+       }
+
+    $alergias = collect($alergias_paciente);
+      
+       return view('paciente.alergias',['allergias' =>$alergias]);
     
+    
+       }
+
+
+    public function agregarAlergia(Request $request){
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
+        $records = record::firstWhere('cedula_paciente', $patients->cedula);
+
+        $allergy = allergy::firstOrCreate(
+            ['nombre' =>  $request->nombre],
+        );
+
+        $allergy_record = allergy_record::firstOrCreate(
+            ['alergia_id' =>  $allergy->id], ['expediente_id' =>  $records->id]
+        );
+
+         return redirect()->back();
+    }
 
 
     public function grafica_de_Azucar(Request $request){

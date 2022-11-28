@@ -359,6 +359,13 @@ return [
             'can'  => 'medico.perfil',
         ],
 
+        [ 
+            'text' => 'Gestión de alergías',
+            'url'  => 'paciente/alergias',
+            'icon' => 'fas fa-allergies',
+            'can'  => 'paciente.alergias',
+        ],
+
     ],
 
     /*
