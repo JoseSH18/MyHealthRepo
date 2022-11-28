@@ -12,16 +12,7 @@
                     <div class="form-group">
                      <label for="fechaHora">Fecha y Hora de Cita</label>
                      <input type="datetime-local" name="fechaHora" class="form-control" id="fechaHora" >
-                    </div>
-                    <div class="form-group">
-                        <label for="estado">Estado de cita</label>
-                        <select type="text" name="estado" class="form-control" id="estado">
-                            <option value="Presente">Presente</option>
-                            <option value="Ausente" selected>Ausente</option>
-                            <option value="Cancelada" selected>Cancelada</option>
-                            <option value="Pospuesta" selected>Pospuesta</option>
-                        </select>
-                    </div>
+            </div>
 
             </div>
             <div class="modal-footer justify-content-between">

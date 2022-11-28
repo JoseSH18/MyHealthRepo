@@ -51,7 +51,6 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <script>
-
     
       // Data retrieved https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature
 Highcharts.chart('container', {
@@ -80,20 +79,14 @@ Highcharts.chart('container', {
             enableMouseTracking: true
         }
         
-
     },
     
-
     series: [ {
         name: 'Nivel',
        
         data: <?= $data ?>
     }]
-
-
-
 });
-
     </script>
 
 
@@ -161,7 +154,7 @@ Highcharts.chart('container', {
                             
                             <td>
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-sugar-{{$sugar->id}}">
-                                editar
+                                Modificar
                                  </button>
                                 
                                 
@@ -229,6 +222,4 @@ Highcharts.chart('container', {
 </html>
 
 @stop
-
-
 

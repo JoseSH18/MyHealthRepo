@@ -97,9 +97,26 @@ class PacientesController extends Controller
     }
 
     public function presion(Request $request){
-       $pressures = Pressure::all();
-        return view('paciente.presion', compact('pressures')) ;
+        $user = Auth::user();
+        $patients = patient::firstWhere('correo', $user->email);
+
+       
+       $records = record::firstWhere('cedula_paciente', $patients->cedula);
+       
+      
+       $pressures = pressure::where('expediente_id', $records->id)->get();
+       $arregloDeNiveles =[];
+
+       foreach ($pressures as $pressure) {
+        $arregloDeNiveles[] = ['name'=>$pressure['fecha'], 'y'=> floatval($pressure['valor'])];
     }
+
+       return view('paciente.presion',["data"=> json_encode($arregloDeNiveles),'patients' => $patients,'pressures' =>$pressures]);
+
+       
+   }
+       
+    
 
     public function agregarPresion(Request $request){
         $user = Auth::user();
@@ -118,6 +135,24 @@ class PacientesController extends Controller
        
     }
 
+    public function actualizar_presion(Request $request, $id){
+        $user = Auth::user();
+        $pressure= pressure::find($id);
+
+        $pressure->valor = $request->valor;
+        $pressure->fecha = $request->fecha;
+        $pressure->save();
+        return redirect()->back();
+    }
+
+    public function eliminarPresion(Request $request, $id){
+        $user = Auth::user();
+        $pressure = pressure::find($id);
+        $pressure->delete();
+        return redirect()->back();
+    }
+
+    
 
 
     public function grafica_de_Azucar(Request $request){
@@ -132,12 +167,14 @@ class PacientesController extends Controller
        
        //$id_exp = $patients->records->id;
 
-       $sugars = sugar::all();
+       $sugars = sugar::where('expediente_id', $records->id)->get();
        $puntos =[];
 
        foreach ($sugars as $sugar) {
         $puntos[] = ['name'=>$sugar['fecha'], 'y'=> floatval($sugar['valor'])];
+   
     }
+    
 
     
     return view('paciente.grafica_de_Azucar',["data"=> json_encode($puntos),'patients' => $patients,'sugars' =>$sugars]);
@@ -189,8 +226,19 @@ class PacientesController extends Controller
     $records = record::firstWhere('cedula_paciente', $patients->cedula);
     $Medicinas = medicine::all();
     $Reminders = reminder::where('expediente_id', $records->id)->get();    
-    $medicine_records = medicine_record::find($records->id);
-    $Medicines = medicine::find($medicine_records->medicamento_id); 
+
+
+    $Medicines = medicine_record::join('medicines', function($join) use($records)
+    {
+        $join->on('medicamento_id', '=', 'medicines.id')
+        ->where('medicine_records.expediente_id', '=', $records->id);
+        
+           
+    })->join('records', function($query) use($records){
+        $query->on('medicine_records.expediente_id', '=', 'records.id')
+        ->where('medicine_records.expediente_id', '=', $records->id);
+    })->get();
+
     
         return view('paciente.recordatorios' , [    
             'patients' => $patients, 'records' => $records , "Medicines" => $Medicines, "Reminders" =>$Reminders, 'Medicinas'=>$Medicinas
@@ -254,12 +302,22 @@ class PacientesController extends Controller
         $newAppointment = new appointment();
         $newAppointment->cedula_paciente = $patient->cedula;
         $newAppointment->codigo_medico = $codigo_medico;
-        $newAppointment->estado = $request->estado;
+        $newAppointment->estado = "Pendiente";
         $newAppointment->fechaHora = $request->fechaHora;
 
         $newAppointment->save();
 
         return redirect('/paciente/historial');
+
+    }
+
+    public function cancelar_cita(Request $request, $id_cita){
+        $cita = appointment::find($id_cita);
+
+        $cita->estado = "Cancelada";
+        $cita->save();
+
+        return redirect()->back();
 
     }
     
