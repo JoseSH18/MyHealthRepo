@@ -21,4 +21,8 @@ class medico extends Model
     {
         return $this->nombre1 . ' ' . $this->nombre2 . ' ' . $this->apellido1. ' ' . $this->apellido2;
     } 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'correo');
+    }
 }
