@@ -8,6 +8,7 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-update-profile-{{$patients->cedula}}">
         Editar Perfil
     </button>
+    <a href="{{route('paciente.destroy',$patients->cedula)}}" class="btn btn-warning">Eliminar Perfil</a>
 </h1>
 @stop
 

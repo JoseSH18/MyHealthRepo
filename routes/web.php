@@ -63,7 +63,7 @@ Route::get('/paciente/buscar_medicos', [App\Http\Controllers\PacientesController
 Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->middleware('can:medico.index')->name('medico.index');
 Route::get('/medico/perfil', [App\Http\Controllers\MedicosController::class, 'perfil'])->middleware('can:medico.perfil')->name('medico.perfil');
 Route::post('/medico/{codigo_medico}/update', [App\Http\Controllers\MedicosController::class, 'update'])->middleware('can:medico.update')->name('medico.update');
-
+Route::get('/medico/{codigo_medico}/destroy', [App\Http\Controllers\MedicosController::class, 'destroy'])->name('medico.destroy');
 
 
 Route::get('/paciente/presion', [App\Http\Controllers\PacientesController::class, 'presion'])->middleware('can:paciente.presion')->name('paciente.presion');
@@ -74,6 +74,7 @@ Route::delete('/paciente/{cedula_paciente}/eliminarPresion', [App\Http\Controlle
 Route::post('/paciente/agregarAlergia', [App\Http\Controllers\PacientesController::class, 'agregarAlergia'])->name('paciente.agregarAlergia');
 Route::get('/paciente/alergias', [App\Http\Controllers\PacientesController::class, 'alergias'])->name('paciente.alergias');
 Route::post('/paciente/registrarAlergia', [App\Http\Controllers\PacientesController::class, 'registrarAlergia'])->name('paciente.registrarAlergia');
+Route::get('/paciente/{cedula_paciente}/destroy', [App\Http\Controllers\PacientesController::class, 'destroy'])->name('paciente.destroy');
 Route::post('/paciente/{Id}/updateAlergias', [App\Http\Controllers\PacientesController::class, 'updateAlergias'])->name('paciente.updateAlergias');
 
 Auth::routes();

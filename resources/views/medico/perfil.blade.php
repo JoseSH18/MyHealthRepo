@@ -8,6 +8,7 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-update-profile-{{$medicos->codigo}}">
         Editar Perfil
     </button>
+    <a href="{{route('medico.destroy',$medicos->codigo)}}" class="btn btn-warning">Eliminar Perfil</a>
 </h1>
 @stop
 

@@ -28,6 +28,7 @@ class RolSeeder extends Seeder
         Permission::create(['name'=>'paciente.historial'])->assignRole($role2);
         Permission::create(['name'=>'paciente.perfil'])->assignRole($role2);
         Permission::create(['name'=>'paciente.update'])->assignRole($role2);
+        Permission::create(['name'=>'paciente.destroy'])->assignRole($role2);
         Permission::create(['name'=>'paciente.grafica_de_Azucar'])->assignRole($role2);
         Permission::create(['name'=>'paciente.recordatorio'])->assignRole($role2);
         Permission::create(['name'=>'paciente.buscar'])->assignRole($role2);
