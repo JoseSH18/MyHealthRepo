@@ -198,6 +198,8 @@ Highcharts.chart('container', {
         </form>
         </div>
     </div> 
+
+<!-- -->
 </div>
 
 

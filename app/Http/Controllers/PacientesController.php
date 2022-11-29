@@ -186,7 +186,7 @@ class PacientesController extends Controller
         );
          return redirect()->back();
     }
-
+    
     public function agregarAlergia(Request $request){
         $user = Auth::user();
         $patients = patient::firstWhere('correo', $user->email);
@@ -203,6 +203,18 @@ class PacientesController extends Controller
        return redirect('/paciente/alergias');
     
         }
+
+
+        public function updateAlergias(Request $request, $id){
+    
+           $user = Auth::user();
+           $alergia = allergy::find($id);
+
+           $alergia->nombre = $request->input('nombre');
+           $alergia->save();
+           return redirect()->back();
+        
+            }
 
 
     public function grafica_de_Azucar(Request $request){

@@ -74,7 +74,7 @@ Route::delete('/paciente/{cedula_paciente}/eliminarPresion', [App\Http\Controlle
 Route::post('/paciente/agregarAlergia', [App\Http\Controllers\PacientesController::class, 'agregarAlergia'])->name('paciente.agregarAlergia');
 Route::get('/paciente/alergias', [App\Http\Controllers\PacientesController::class, 'alergias'])->name('paciente.alergias');
 Route::post('/paciente/registrarAlergia', [App\Http\Controllers\PacientesController::class, 'registrarAlergia'])->name('paciente.registrarAlergia');
-
+Route::post('/paciente/{Id}/updateAlergias', [App\Http\Controllers\PacientesController::class, 'updateAlergias'])->name('paciente.updateAlergias');
 
 Auth::routes();
 
