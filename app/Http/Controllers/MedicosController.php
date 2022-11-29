@@ -43,6 +43,17 @@ class MedicosController extends Controller
         return redirect()->back();
 
     }
+    public function destroy(Request $request, $codigo_medico)
+    {
+        $medico = medico::find($codigo_medico);
+        $user = Auth::user();
+        $medico ->delete();
+        $user ->delete();
+        return redirect()->back();
+    }
+
+
+
     public function index(Request $request){
 
         return view('medico.index');

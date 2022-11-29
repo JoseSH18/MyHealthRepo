@@ -63,7 +63,7 @@ Route::get('/paciente/buscar_medicos', [App\Http\Controllers\PacientesController
 Route::get('/medico/index', [App\Http\Controllers\MedicosController::class, 'index'])->middleware('can:medico.index')->name('medico.index');
 Route::get('/medico/perfil', [App\Http\Controllers\MedicosController::class, 'perfil'])->middleware('can:medico.perfil')->name('medico.perfil');
 Route::post('/medico/{codigo_medico}/update', [App\Http\Controllers\MedicosController::class, 'update'])->middleware('can:medico.update')->name('medico.update');
-
+Route::get('/medico/{codigo_medico}/destroy', [App\Http\Controllers\MedicosController::class, 'destroy'])->name('medico.destroy');
 
 
 Route::get('/paciente/presion', [App\Http\Controllers\PacientesController::class, 'presion'])->middleware('can:paciente.presion')->name('paciente.presion');
