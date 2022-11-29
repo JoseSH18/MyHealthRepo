@@ -370,6 +370,15 @@ class PacientesController extends Controller
         return redirect()->back();
 
     }
+    public function destroy(Request $request, $cedula_paciente)
+    {
+        $patient = patient::find($cedula_paciente);
+        $user = Auth::user();
+        $patient ->delete();
+        $user ->delete();
+        return redirect()->back();
+    }
+
     
 
 }
